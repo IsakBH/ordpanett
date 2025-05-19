@@ -1,0 +1,1346 @@
+///////////////////////// BASIC STYLING  ////////////////////////////////
+$buttonHoverColor: #E2E7EA;
+
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    transition: 0.05s;
+    font-family: "Poppins", sans-serif;
+}
+
+body {
+    background-color: aliceblue;
+}
+
+h1 {
+    padding-top: 0px;
+    text-align: center;
+    margin: 0 auto;
+    padding-bottom: 10px;
+}
+
+hr {
+    height: 25px;
+    width: 1px;
+    color: lightgrey;
+}
+
+.container {
+    background-color: #ffffff;
+    width: 60%; // var 100vmin, men endret til 60% for å fikse height-scaling
+    height: 100%;
+    padding: 50px 30px;
+    position: absolute;
+    transform: translate(-50%, -50%);
+    left: 50%;
+    top: 50%;
+    border-radius: 0px;
+    filter: drop-shadow(0 0 15px grey);
+}
+
+.options {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 15px;
+    padding: 10px;
+    border: 1px solid grey;
+    border-radius: 10px;
+}
+
+input[type="color"] {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    background-color: transparent;
+    width: 28px;
+    height: 28px;
+    border: none;
+    cursor: pointer;
+    border-radius: 10px;
+
+    &::-webkit-color-swatch-wrapper {
+        padding: 0;
+    }
+
+    &::-webkit-color-swatch {
+        border: none;
+        border-radius: 10px;
+    }
+
+    &::-moz-color-swatch {
+        border: none;
+        border-radius: 10px;
+    }
+}
+
+button {
+    height: 35px;
+    width: 35px;
+    display: grid;
+    place-items: center;
+    border-radius: 10px;
+    border: 1px solid grey;
+    background-color: #ffffff;
+    outline: none;
+    color: #020929;
+    &:hover{
+        background-color: $buttonHoverColor;
+    }
+    &:active{
+        transform: scale(0.9);
+    }
+}
+
+select {
+    color: #020929;
+    background-color: #ffffff;
+    padding: 7px;
+    text-decoration: none;
+    border: 1px solid grey;
+    border-radius: 10px;
+    &:hover{
+        background-color: $buttonHoverColor;
+    }
+    &:active{
+        transform: scale(0.9);
+    }
+}
+
+.options label, .options select {
+    font-family: "Poppins", sans-serif;
+}
+
+.input-wrapper {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+input[type="color"] {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    background-color: transparent;
+    width: 28px;
+    height: 28px;
+    border: none;
+    cursor: pointer;
+    border-radius: 10px;
+}
+
+#text-input {
+    margin-top: 5px;
+    padding: 10px;
+    border: 1px solid grey;
+    height: calc(100% - 180px);
+    border-radius: 10px;
+    overflow-y: auto;
+    overflow-x: hidden;
+
+    // fikser at liste punktene går utenfor tekst boksen
+    font-family: inherit;
+    ul, ol{
+        padding-left: 40px;
+        margin: 0;
+    }
+    &:focus {
+        outline: none;
+    }
+}
+
+.font-gothic {
+    font-family: 'UnifrakturMaguntia', cursive;
+}
+
+.active {
+    background-color: #D3E3FD;
+}
+
+#text-input table {
+    border-collapse: collapse;
+    margin-bottom: 10px;
+    width: 100%;
+}
+
+#text-input td {
+    border: 1px solid #ccc;
+    padding: 8px;
+    min-width: 50px;
+}
+
+#text-input td:focus {
+    background-color: #f0f0f0;
+    outline: 2px solid #8AC8FF;
+}
+
+.table-container {
+    position: relative;
+    margin: 20px 0;
+}
+
+.table-delete-btn {
+    position: absolute;
+    top: -20px;
+    right: 0;
+    background-color: #ff4444;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    padding: 4px 8px;
+    cursor: pointer;
+    z-index: 1;
+}
+
+.table-delete-btn:hover {
+    background-color: #cc0000;
+}
+
+#text-input .table-container table {
+    border-collapse: collapse;
+    margin-bottom: 10px;
+    width: 100%;
+}
+
+#text-input .table-container td {
+    border: 1px solid #ccc;
+    padding: 8px;
+    min-width: 50px;
+}
+
+#text-input .table-container td:focus {
+    background-color: #f0f0f0;
+    outline: 2px solid #8AC8FF;
+}
+
+#cross-symbol {
+    display: none;
+    position: fixed;
+    right: 20px;
+    top: 50%;
+    transform:
+    translateY(-50%);
+    font-size: 40px;
+    filter: drop-shadow(0 0 100px yellow);
+}
+
+@media screen and (max-width: 480px) {
+    h1 {
+        font-size: 1.5em;
+        padding-bottom: 5px;
+    }
+
+    .options {
+        gap: 3px;
+    }
+}
+
+#giscus {
+    margin-top: 20px;
+}
+
+#save-status {
+    position: fixed;
+    bottom: 0;
+    right: 0;
+    margin: 15px 15px;
+    padding: 5px 10px;
+    font-size: 1.5rem;
+    border-radius: 10px;
+    border: 1px solid grey;
+    color: #020929;
+    opacity: 0;
+    transition: opacity 0.3s ease, transform 0.3s ease;
+    transform: translateY(100px);
+}
+
+.status-visible {
+    opacity: 1 !important;
+    transform: translateY(0) !important;
+}
+
+#splashText {
+    position: fixed;
+    right: 0;
+    top: 0;
+    color: yellow;
+    background: rgba(0, 0, 0, 0.5);
+    padding: 10px;
+    margin: 10px;
+    z-index: 1000;
+    user-select: none;
+    &:hover {
+        cursor: pointer;
+    }
+}
+
+.profile-menu {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    z-index: 1000;
+}
+
+.profile-picture {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    cursor: pointer;
+    object-fit: cover;
+}
+
+.profile-dropdown {
+    display: none;
+    position: absolute;
+    right: 0;
+    top: 45px;
+    background: white;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    padding: 10px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+    min-width: 150px;
+}
+
+.profile-menu:hover .profile-dropdown {
+    display: block;
+}
+
+.profile-dropdown a {
+    display: block;
+    padding: 5px 10px;
+    text-decoration: none;
+    color: #333;
+}
+
+.profile-dropdown a:hover {
+    background: #f5f5f5;
+}
+
+#backButton {
+    display: inline-flex;
+    width: fit-content;
+    white-space: nowrap;
+    background: white;
+    padding: 10px;
+    border-radius: 100px;
+    color: black;
+    transition: 0.3s;
+    cursor: pointer;
+    box-shadow: 0px 0px 5px #cccccc;
+    text-decoration: none;
+    &:hover {
+        transform: translate3d(0, -0.2em, 0);
+        outline: none;
+        border: none;
+    }
+}
+
+.auth-container {
+    max-width: 400px;
+    margin: 50px auto;
+    padding: 20px;
+    background: white;
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+}
+
+.form-group {
+    margin-bottom: 15px;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 5px;
+}
+
+.form-group input {
+    width: 100%;
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+.error {
+    color: red;
+    margin-bottom: 10px;
+    padding: 10px;
+    background: #ffe6e6;
+    border-radius: 4px;
+}
+
+.success {
+    color: green;
+    margin-bottom: 10px;
+    padding: 10px;
+    background: #e6ffe6;
+    border-radius: 4px;
+}
+
+.profile-settings {
+    max-width: 600px;
+    margin: 50px auto;
+    padding: 20px;
+    background: white;
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+}
+
+.current-profile {
+    text-align: center;
+    margin: 20px 0;
+    transition: 0.1s;
+    img {
+        width: 150px;
+        height: 150px;
+        border-radius: 50%;
+        object-fit: cover;
+        filter: drop-shadow(0px 0px 5px #cccccc);
+    }
+}
+
+#submit {
+    width: 100%;
+    height: 40px;
+    background: #8AC8FF;
+    color: white;
+    border: none;
+    border-radius: 10px;
+    margin-bottom: 20px;
+    gap: 8px;
+    font-size: 0.9rem;
+    transition: all 0.2s ease;
+
+    &:hover {
+        background: darken(#8AC8FF, 10%);
+        transform: translateY(-1px);
+    }
+    &:active {
+        transform: translateY(1px);
+    }
+    &:focus {
+        background: darken(#8AC8FF, 10%);
+    }
+}
+
+input[type=text],
+input[type=password] {
+    &:focus {
+        outline: none;
+        border: 1px solid #8AC8FF;
+    }
+}
+
+#splitter {
+    margin-top: 10px;
+    margin-bottom: 5px;
+    width: 25px;
+    height: 1px;
+}
+
+#logout {
+    width: 100%;
+    height: 40px;
+    background: #FF002F;
+    color: white;
+    border: none;
+    border-radius: 10px;
+    margin-bottom: 20px;
+    gap: 8px;
+    font-size: 0.9rem;
+    transition: all 0.2s ease;
+    text-decoration: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+
+    &:hover {
+        background: darken(#FF002F, 10%);
+        transform: translateY(-1px);
+        color: white;
+        text-decoration: none;
+    }
+    &:active {
+        transform: translateY(1px);
+    }
+    &:focus {
+        background: darken(#FF002F, 10%);
+        outline: none;
+    }
+}
+
+// gjør sånn at "browse" knappen blir større og blå
+input[type="file"]::file-selector-button {
+  // grønn farge: #4CAF50
+  background-color: #8AC8FF;
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.settings-form {
+    margin: 20px 0;
+}
+
+.delete-account-form {
+    margin: 20px 0;
+}
+
+#delete-account {
+    width: 100%;
+    height: 40px;
+    background: #ff4444;
+    color: white;
+    border: none;
+    border-radius: 10px;
+    margin-bottom: 20px;
+    gap: 8px;
+    font-size: 0.9rem;
+    transition: all 0.2s ease;
+
+    &:hover {
+        background: darken(#ff4444, 10%);
+        transform: translateY(-1px);
+    }
+    &:active {
+        transform: translateY(1px);
+    }
+    &:focus {
+        background: darken(#ff4444, 10%);
+        outline: none;
+    }
+}
+
+#iamready {
+    width: 100%;
+    height: 40px;
+    background: #8AC8FF;
+    color: white;
+    border: none;
+    border-radius: 10px;
+    margin-bottom: 20px;
+    gap: 8px;
+    font-size: 0.9rem;
+    transition: all 0.2s ease;
+    text-decoration: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+
+    &:hover {
+        background: darken(#8AC8FF, 10%);
+        transform: translateY(-1px);
+        color: white;
+        text-decoration: none;
+    }
+    &:active {
+        transform: translateY(1px);
+    }
+    &:focus {
+        background: darken(#8AC8FF, 10%);
+        outline: none;
+    }
+}
+
+#reklame {
+    color: #8AC8FF;
+    text-decoration: none;
+    &:visited {
+        color: darken(#8AC8FF, 20%);
+    }
+    &:hover{
+        color: lighten(#8AC8FF, 5%);
+    }
+}
+
+#bottomtext {
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    margin: 10px;
+}
+
+.document-manager {
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 250px;
+    height: 100%;
+    background: #ffffff;
+    padding: 20px;
+    border-right: 1px solid #e0e0e0;
+    box-shadow: 2px 0 10px rgba(0, 0, 0, 0.05);
+    scrollbar-width: 0px;
+    overflow: overlay;
+
+    h3 {
+        color: #020929;
+        font-size: 1.2rem;
+        margin-bottom: 20px;
+        font-weight: 600;
+    }
+
+    ::-webkit-scrollbar {
+      width: 1px;
+    }
+
+    ::-webkit-scrollbar-track {
+      background: transparent;
+    }
+
+    ::-webkit-scrollbar-thumb {
+      background: rgba(0, 0, 0, 0.5); /* Adjust the color as needed */
+    }
+}
+
+.new-doc-button {
+    width: 100%;
+    height: 40px;
+    background: #8AC8FF;
+    color: white;
+    border: none;
+    border-radius: 10px;
+    margin-bottom: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    font-size: 0.9rem;
+    transition: all 0.2s ease;
+
+    &:hover {
+        background: darken(#8AC8FF, 10%);
+        transform: translateY(-1px);
+    }
+
+    &:active {
+        transform: translateY(1px);
+    }
+
+    i {
+        font-size: 0.8rem;
+    }
+}
+
+.search-container {
+    position: relative;
+    margin-bottom: 20px;
+
+    i {
+        position: absolute;
+        left: 12px;
+        top: 50%;
+        transform: translateY(-50%);
+        color: #666;
+        font-size: 0.9rem;
+    }
+
+    input {
+        width: 100%;
+        padding: 8px 12px 8px 35px;
+        border: 1px solid #e0e0e0;
+        border-radius: 8px;
+        font-size: 0.9rem;
+
+        &:focus {
+            outline: none;
+            border-color: #3D444D;
+            box-shadow: 0 0 0 2px rgba(138, 200, 255, 0.2);
+        }
+    }
+}
+
+#documentSearch {
+    &:hover {
+        cursor: pointer; // I guess pointer er bra? jeg foretrekker pointer, men kan skjønne at andre synes det er bedre med pointer: text (med tanke på at dette er tekst)
+    }
+}
+
+.document-list {
+    height: calc(100% - 140px);
+    overflow-y: auto;
+
+    &::-webkit-scrollbar {
+        width: 8px;
+    }
+
+    &::-webkit-scrollbar-track {
+        background: #f1f1f1;
+        border-radius: 4px;
+    }
+
+    &::-webkit-scrollbar-thumb {
+        background: #ccc;
+        border-radius: 4px;
+
+        &:hover {
+            background: #999;
+        }
+    }
+}
+
+#documentsList {
+    list-style: none;
+    padding: 0;
+
+    li { // dokumentene
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 8px;
+        border-radius: 8px;
+        margin-bottom: 8px;
+        background: #f8f9fa;
+        transition: all 0.2s ease;
+        border: 1px solid #ddd;
+        animation: popin 0.3s;
+
+        &:hover {
+            transform: translateY(-3px);
+
+            .document-actions {
+                opacity: 1;
+            }
+        }
+        &:active {
+            transform: translateY(0px);
+            transform: scale(0.95);
+        }
+
+        &.active-document {
+            border: 2px solid #8AC8FF;
+            background: lighten(#8AC8FF, 25%);
+            filter: drop-shadow(0 0 2px #cccccc);
+        }
+    }
+}
+
+// slett knappen (og muligens andre actions i fremtiden)
+.document-actions {
+    display: flex;
+    gap: 8px;
+    opacity: 0.4;
+    transition: opacity 0.2s ease;
+
+    button {
+        width: 30px;
+        height: 30px;
+        padding: 0;
+        font-size: 0.8rem;
+        background: white;
+        border: 1px solid #ddd;
+        &:hover {
+            background: #ff4444;
+            color: white;
+        }
+    }
+}
+
+.document-item {
+    flex-grow: 1;
+    padding: 4px 8px;
+    cursor: pointer;
+    border-radius: 4px;
+
+    span {
+        font-size: 0.9rem;
+        color: #333;
+        user-select: none;
+    }
+}
+
+#social {
+    width: 100%;
+    height: 40px;
+    background: #1F6FEB;
+    color: white;
+    border: none;
+    border-radius: 10px;
+    margin-bottom: 20px;
+    gap: 8px;
+    font-size: 1.5rem;
+    transition: all 0.2s ease;
+    text-decoration: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+
+    &:hover {
+        background: #2498FF;
+        transform: translateY(-1px);
+        color: white;
+        text-decoration: none;
+    }
+    &:active {
+        transform: translateY(1px);
+    }
+}
+
+#changelogButton {
+    width: 100%;
+    height: 40px;
+    background: #808080;
+    color: white;
+    border: none;
+    border-radius: 10px;
+    gap: 8px;
+    font-size: 1.5rem;
+    transition: all 0.2s ease;
+    text-decoration: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+
+    &:hover {
+        background: lighten(#808080, 10%);
+        transform: translateY(-1px);
+        color: white;
+        text-decoration: none;
+    }
+    &:active {
+        transform: translateY(1px);
+    }
+}
+
+#migrateFromLocal {
+    width: auto;
+    display: flex;
+    padding-left: 5px;
+    padding-right: 5px;
+}
+
+#placeholder {
+    font-style: italic;
+    user-select: none;
+}
+
+.current-profile {
+    text-align: left;
+    margin: 10px 0;
+    transition: 0.1s;
+    img {
+        width: 150px;
+        height: 150px;
+        border-radius: 50%;
+        object-fit: cover;
+        filter: drop-shadow(0px 0px 5px #cccccc);
+    }
+}
+
+@media screen and (max-width: 1500px) {
+    .document-manager {
+        position: fixed;
+        left: -250px;
+        transition: left 0.3s ease;
+        z-index: 1000;
+        padding-top: 60px;
+
+        &.active {
+            left: 0;
+        }
+    }
+
+    // hamburger meny
+    .menu-toggle {
+        display: block;
+        position: fixed;
+        left: 10px;
+        top: 10px;
+        z-index: 1001;
+        background: #8AC8FF;
+        color: white;
+        padding: 10px;
+        border-radius: 5px;
+        margin-bottom: 200px;
+        &:hover {
+            background-color: #E2E7EA;
+        }
+    }
+
+    .container {
+        width: 100vmin;
+        height: 100%;
+    }
+}
+
+// MOBIL VENNLIGHET
+@media screen and (max-width: 1000px) {
+    .container {
+        width: 100%;
+        height: 100vh;
+        padding: 20px 10px;
+        position: static;
+        transform: none;
+    }
+
+    #splashText {
+        display: none;
+    }
+
+    .container {
+        button {
+            flex: 0 0 auto;
+            padding: 10px 15px;
+            min-width: 40px;
+        }
+    }
+
+    .options {
+        display: flex;
+        flex-wrap: nowrap;
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
+        white-space: nowrap;
+        gap: 15px;
+        scrollbar-width: thin;
+        scrollbar-color: #666 transparent;
+    }
+
+    .options::-webkit-scrollbar {
+      height: 6px;
+    }
+
+    .options::-webkit-scrollbar-thumb {
+      background: #666;
+      border-radius: 3px;
+    }
+
+    .options::-webkit-scrollbar-track {
+      background: transparent; // skjuler bakgrunnen på scrollbaren
+    }
+
+    .profile-menu {
+        top: 10px;
+        right: 10px;
+    }
+
+    // mindre fontstørrelse på mobil
+    #text-input {
+        font-size: 16px;
+        height: calc(100vh - 250px);
+    }
+
+    // gjør toolbar scrollable horisontalt
+    .options {
+        overflow-x: auto;
+        white-space: nowrap;
+        padding-bottom: 10px;
+        -webkit-overflow-scrolling: touch;
+    }
+}
+
+// toggle switch
+
+// boksen rundt slider
+.switch {
+  position: relative;
+  display: inline-block;
+  width: 60px;
+  height: 34px;
+  outline: none;
+}
+
+// gjem default html checkbox
+.switch input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+
+// slideren
+.slider {
+    outline: none;
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #F0F8FF;
+    -webkit-transition: .1s;
+    transition: .1s;
+}
+
+.slider:before {
+    position: absolute;
+    content: "";
+    height: 26px;
+    width: 26px;
+    left: 4px;
+    bottom: 4px;
+    background-color: white;
+    -webkit-transition: .1s;
+    transition: .1s;
+    filter: drop-shadow(0px 0px 2px #ccc);
+}
+
+input:checked + .slider {
+    background-color: #8AC8FF;
+}
+
+input:focus + .slider {
+    box-shadow: 0 0 1px #1F6FEB;
+}
+
+input:checked + .slider:before {
+    outline: none;
+    -webkit-transform: translateX(26px);
+    -ms-transform: translateX(26px);
+    transform: translateX(26px);
+}
+
+/* Rounded sliders */
+.slider.round {
+    border-radius: 34px;
+    filter: drop-shadow(0px 0px black);
+}
+
+.slider.round:before {
+    border-radius: 50%;
+}
+
+#calculator-button {
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+#calculator-container {
+    position: absolute;
+    top: 50%;
+    right: 50%;
+    background: white;
+    padding: 10px;
+    border: 1px solid #ccc;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+    border-radius: 5px;
+}
+
+#calc-display {
+    width: 100%;
+    padding: 10px;
+    font-size: 20px;
+    text-align: right;
+    margin-bottom: 10px;
+    border: none;
+    background: #F2F2F2;
+    color: #333333;
+    transition: 0.3s;
+    &:hover {
+        background: #E6E6E6;
+    }
+}
+
+.buttons {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 5px;
+}
+
+.calc-btn {
+    padding: 30px;
+    font-size: 18px;
+    border: none;
+    background: #D2D2D2;
+    cursor: pointer;
+    justify-content: center;
+    align-items: center;
+    display: flex;
+    transition: 0.1s;
+    &:hover {
+        background: #C8C8C8;
+        scale: 1.02;
+    }
+    &:active {
+        background: #B4B4B4;
+        scale: 0.9999999999
+    }
+}
+
+.calc-btn.operator {
+    background: #E6E6E6;
+    color: #3F3F3F;
+    &:hover {
+        background: #DCDCDC;
+    }
+    &:active {
+        background: #BEBEBE;
+    }
+}
+
+.calc-btn.equal {
+    grid-column: span 4;
+    background: #3584E4;
+    color: #EDF4FD;
+    padding: 30px 135px;
+    &:hover {
+        background: #4990E7;
+    }
+    &:active {
+        background: #2A6AB6;
+    }
+}
+
+.hidden {
+    display: none;
+}
+
+// CHANGELOG SIDEN
+.commit {
+    border: 1px solid #ddd;
+    margin: 10px 40px;
+    padding: 15px;
+    border-radius: 10px;
+    filter: drop-shadow(0px 0px 5px #ccc);
+}
+
+.commit-date {
+    color: #666;
+    font-size: 0.9em;
+}
+
+.commit-message {
+    margin: 10px 0;
+}
+
+.commit-author {
+    color: #0366d6;
+}
+
+#changeLogTopBar {
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+}
+
+#changeLogTitle {
+    text-align: left;
+    margin: 40px 40px 0px 40px;
+}
+
+#changeLogBackButton {
+    text-align: left;
+    margin: 40px 40px 0px 40px;
+    text-decoration: none;
+    color: black;
+    padding: 5px;
+    border: 1px solid black;
+    border-radius: 5px;
+    transition: 0.2s;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    &:hover {
+        transform: translateY(-1px);
+        background: darken(aliceblue, 5%);
+    }
+    &:active {
+        transform: translateY(0px);
+        background: darken(aliceblue, 10%);
+    }
+}
+
+// DARK MODE
+.dark-theme {
+    background-color: #0D1117;
+    color: #ffffff;
+
+    // changelog side
+    .commit {
+        filter: none;
+    }
+
+    #changeLogBackButton {
+        color: #ffffff;
+        border: 1px solid white;
+        &:hover {
+            background: #3c434c;
+        }
+        &:active {
+            background: darken(#3c434c, 10%);
+        }
+    }
+
+    .container {
+        background-color: #0D1117;
+        filter: none;
+        border: 1px solid #3D444D;
+        color: #ffffff;
+    }
+
+    #text-input {
+        background-color: #0D1117;
+        color: #ffffff;
+        border-color: #3D444D;
+    }
+
+    .options button {
+        background-color: #0D1117;
+        color: #ffffff;
+        border-color: #3D444D;
+
+        &:hover {
+            background-color: #151B23;
+        }
+    }
+
+    select {
+        background-color: #0D1117;
+        color: #ffffff;
+        border-color: #3D444D;
+        &:hover {
+            background-color: #151B23;
+        }
+    }
+
+    .document-manager {
+        background-color: #0D1117;
+        border-color: #3D444D;
+        color: #ffffff !important;
+        h3 {
+            color: #ffffff;
+        }
+    }
+
+    #documentsList li {
+        background-color: #0D1117;
+        border-color: #3D444D;
+        color: #ffffff;
+    }
+
+    .document-item {
+        span {
+            color: #ffffff;
+        }
+    }
+
+    #documentSearch {
+        background-color: #212830;
+        border-color: #3D444D;
+        color: #ffffff;
+    }
+
+    #splashText {
+        background-color: rgba(21, 27, 35, 0.5);
+    }
+
+    .profile-dropdown {
+        background-color: #0D1117;
+        border-color: #3D444D;
+        color: #ffffff;
+        a {
+            color: #ffffff;
+            &:hover {
+                background-color: #151B23;
+            }
+        }
+    }
+
+    hr {
+        color: #3D444D;
+    }
+
+    // INSTILLINGER SIDE
+    .profile-settings {
+        background-color: #0D1117;
+        border: 1px solid #3D444D;
+        box-shadow: 0 2px 5px rgba(255,255,255,0.2);
+    }
+
+    .current-profile {
+        transition: 0.4s;
+        img {
+            filter: drop-shadow(0px 0px 10px #3D444D);
+        }
+    }
+
+    input[type="file"]::file-selector-button {
+      // grønn farge: #4CAF50
+      background-color: #1F6FEB;
+      &:hover {
+          background-color: darken(#8AC8FF, 20%);
+      }
+    }
+
+    #submit, #newDocument {
+        background-color: #1F6FEB;
+        color: #ffffff;
+        &:hover {
+            background-color: darken(#8AC8FF, 20%);
+        }
+    }
+
+    #logout, #delete-account {
+        background-color: #FF002F;
+        &:hover {
+            background-color: #FF4444;
+        }
+    }
+
+    input:checked + .slider {
+        background-color: #1F6FEB;
+        &:hover {
+            background-color: darken(#8AC8FF, 20%);
+        }
+    }
+
+    #save-status {
+        color: #ffffff;
+    }
+
+    #backButton {
+        background-color: #0d1117;
+        color: #ffffff;
+        text-decoration: none;
+        text-align: center;
+        box-shadow: 0px 0px 5px #cccccc;
+    }
+
+    // login siden
+    .auth-container {
+        background-color: #0D1117;
+        border: 1px solid #3D444D;
+    }
+
+    input[type=text], input[type=password] {
+        background-color: #0D1117;
+        border: 1px solid #3D444D;
+        color: #ffffff;
+    }
+
+    input[type=file] {
+        border: 1px solid #3D444D;
+    }
+
+    .menu-toggle {
+        background-color: #1F6FEB;
+        &:hover {
+            background-color: #2498FF;
+        }
+    }
+}
+
+.lightmode {
+    body {
+        background-color: white;
+    }
+}
+
+@keyframes popin {
+    0% {
+        transform: scale(0.2);
+    }
+    90% {
+        transform: scale(1.02);
+    }
+    100% {
+        transform: scale(1.0);
+    }
+}
