@@ -808,6 +808,13 @@ function checkForMKX() {
     }
 }
 
+writingArea.onkeydown = function (e) {
+    if (e.key === 'Tab') {
+        e.preventDefault();
+        document.execCommand('insertText', false, '\t');
+    }
+}
+
 // tastatur snarveier
 window.onkeydown = function (e) {
     if (e.ctrlKey) {
