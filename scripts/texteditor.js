@@ -811,9 +811,19 @@ function checkForMKX() {
 writingArea.onkeydown = function (e) {
     if (e.key === 'Tab') {
         e.preventDefault();
-        document.execCommand('insertText', false, '\t');
+        modifyText('insertText', false, '\t');
     }
 }
+
+writingArea.addEventListener('keyup', () => {
+    const selection = window.getSelection();
+    if (selection.rangeCount > 0) {
+        const parent_element = selection.anchorNode.parentElement;
+        const tagname = parent_element.tagName;
+        console.log("Taggen du er inni:", tagname);
+    }
+
+})
 
 // tastatur snarveier
 window.onkeydown = function (e) {
