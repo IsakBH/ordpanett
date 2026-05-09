@@ -28,7 +28,7 @@ if ($_SERVER['REQUEST_METHOD'] === "POST"){
         $_SESSION['brukernavn'] = $database_brukernavn;
         $_SESSION['profilbilde'] = $database_profilbilde;
 
-        header('Location: ../../index.php');
+        header("Location: ../../index.php");
         exit();
     } else {
         $error = "Ugyldig brukernavn eller passord.";
