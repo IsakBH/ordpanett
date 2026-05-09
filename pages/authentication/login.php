@@ -1,9 +1,9 @@
 <?php
-session_start();
-require_once __DIR__ . '../../config/database.php';
+//session_start();
+require_once __DIR__ . '/../../config/database.php';
 
-if($_SERVER['REQUEST_METHOD'] === "POST"){
-
+if ($_SERVER['REQUEST_METHOD'] === "POST"){
+    $error = "Ingen errors!";
 }
 ?>
 
@@ -24,6 +24,26 @@ if($_SERVER['REQUEST_METHOD'] === "POST"){
     </html>
 
     <body>
+        <div class="authentication-container" id="login-container">
+            <h2>Logg inn i Ord På Nett</h2>
+            <p>Får å få tilgang til ekstra funksjoner, må du logge inn.</p> <br>
 
+            <?php
+            if (isset($error)) {
+                echo "<div class='error-melding' id='login-error'> $error </div>";
+            }
+            ?>
+
+            <form method="POST">
+                <label>Brukernavn:</label>
+                <input type="text" name="brukernavn" placeholder="Isak" required> <br>
+
+                <label>E-postadresse (valgfritt)</label>
+                <input type="email" name="epost" placeholder="tulling@tullekoppene.no"> <br>
+
+                <label>Passord:</label>
+                <input type="Password" name="passord" placeholder="Passord01!" required>
+            </form>
+        </div>
     </body>
 </html>
