@@ -2,8 +2,37 @@
 //session_start();
 require_once __DIR__ . '/../../config/database.php';
 
+// håndter innlogging
 if ($_SERVER['REQUEST_METHOD'] === "POST"){
-    $error = "Ingen errors!";
+    $brukernavn = $_POST['brukernavn'];
+    $brukernavn = $mysqli->real_escape_string($brukernavn);
+    $passord = $_POST['passord'];
+
+    // henter data fra databasen
+    $sql = "SELECT * FROM users WHERE username = ?";
+    $stmt = $mysqli->prepare($sql);
+    $stmt->bind_param("s", $brukernavn);
+    $stmt->execute();
+    $result = $stmt->get_result();
+    $user = $result->fetch_assoc();
+
+    // variabler fra queryen
+    $database_bruker_id = $user['id'];
+    $database_brukernavn = $user['username'];
+    $database_passord = $user['password'];
+    $database_profilbilde = $user['profile_picture'];
+
+    // sjekker brukernavn og passord opp mot databasen og sammenligner
+    if ($user && password_verify($passord, $database_passord)) {
+        $_SESSION['bruker_id'] = $database_bruker_id;
+        $_SESSION['brukernavn'] = $database_brukernavn;
+        $_SESSION['profilbilde'] = $database_profilbilde;
+
+        header('Location: ../../index.php');
+        exit();
+    } else {
+        $error = "Ugyldig brukernavn eller passord.";
+    }
 }
 ?>
 
@@ -35,15 +64,16 @@ if ($_SERVER['REQUEST_METHOD'] === "POST"){
             ?>
 
             <form method="POST">
-                <label>Brukernavn:</label>
+                <label>Brukernavn / e-postadresse:</label>
                 <input type="text" name="brukernavn" placeholder="Isak" required> <br>
 
-                <label>E-postadresse (valgfritt)</label>
-                <input type="email" name="epost" placeholder="tulling@tullekoppene.no"> <br>
-
                 <label>Passord:</label>
-                <input type="Password" name="passord" placeholder="Passord01!" required>
+                <input type="Password" name="passord" placeholder="Passord01!" required> <br>
+
+                <button type="submit" class="submit" id="login-submit">Logg inn</button>
             </form>
+
+            <p>Har du ikke bruker enda? <a href="register.php">Registrer deg her!</a></p>
         </div>
     </body>
 </html>
