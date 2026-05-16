@@ -1,11 +1,10 @@
 <?php
-//session_start();
 require_once __DIR__ . '/../../config/database.php';
+session_start();
 
 // håndter innlogging
 if ($_SERVER['REQUEST_METHOD'] === "POST"){
-    $brukernavn = $_POST['brukernavn'];
-    $brukernavn = $mysqli->real_escape_string($brukernavn);
+    $brukernavn = $mysqli->real_escape_string($_POST['brukernavn']);
     $passord = $_POST['passord'];
 
     // henter data fra databasen
@@ -29,7 +28,7 @@ if ($_SERVER['REQUEST_METHOD'] === "POST"){
         $_SESSION['profilbilde'] = $database_profilbilde;
 
         header("Location: ../../index.php");
-        exit();
+        exit;
     } else {
         $error = "Ugyldig brukernavn eller passord.";
     }

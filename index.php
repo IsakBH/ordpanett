@@ -1,9 +1,10 @@
 <?php
-if (!$_SESSION['user_id']){
-    session_start();
-}
-
 require_once __DIR__ . '/config/database.php';
+session_start();
+
+if (!isset($_SESSION['brukernavn'])){
+    header("Location: pages/authentication/login.php");
+}
 ?>
 
 <!DOCTYPE html>
