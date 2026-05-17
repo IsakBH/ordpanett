@@ -2,6 +2,11 @@
 require_once __DIR__ . '/../../config/database.php';
 session_start();
 
+if(isset($_SESSION['nylig_registrert_brukernavn'])) {
+    $nylig_registrert_brukernavn = $_SESSION['nylig_registrert_brukernavn'];
+    $velkomstmelding = "Du registrerte nylig en bruker med brukernavn $nylig_registrert_brukernavn";
+}
+
 // håndter innlogging
 if ($_SERVER['REQUEST_METHOD'] === "POST"){
     $brukernavn = $mysqli->real_escape_string($_POST['brukernavn']);
@@ -59,6 +64,10 @@ if ($_SERVER['REQUEST_METHOD'] === "POST"){
             <?php
             if (isset($error)) {
                 echo "<div class='error-melding' id='login-error'> $error </div>";
+            }
+
+            if (isset($nylig_registrert_brukernavn)) {
+                echo $velkomstmelding;
             }
             ?>
 

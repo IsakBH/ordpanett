@@ -1,20 +1,35 @@
 <?php
 require_once __DIR__ . '/../../config/database.php';
+session_start();
 
 // håndter registrering
 if ($_SERVER['REQUEST_METHOD'] === "POST"){
-    $brukernavn = $_POST['brukernavn'];
+    $originalt_brukernavn = $_POST['brukernavn'];
     $epostadresse = $_POST['epost'];
     $passord = password_hash($_POST['passord'], PASSWORD_BCRYPT);
     $profilbilde = 'default.png';
     $unikt_tall = 1;
     $er_brukernavn_tatt = false;
 
-    // loop for å finne et unikt brukernavn
-    do {
+    $sjekk_om_brukernavn_finnes_sql = "select username from users where username = ?;";
+    $stmt = $mysqli->prepare($sjekk_om_brukernavn_finnes_sql);
+    $stmt->bind_param("s", $originalt_brukernavn);
+    $stmt->execute();
+    $result = $stmt->get_result();
+    $result = $result->fetch_row();
+
+    if($result[0]){
+        echo "Brukernavn finnes allerede, går videre og lager nytt brukernavn";
+        $er_brukernavn_tatt = true;
+    } else {
+        $er_brukernavn_tatt = false;
+        $brukernavn = $originalt_brukernavn;
+    }
+
+    while ($er_brukernavn_tatt){
         $sql = "select count(username) as antall from users where username = ?;";
         $stmt = $mysqli->prepare($sql);
-        $stmt->bind_param("s", $brukernavn);
+        $stmt->bind_param("s", $originalt_brukernavn);
         $stmt->execute();
 
         // sjekker hvis count er større enn null, som da betyr at brukernavnet er tatt :(
@@ -26,17 +41,11 @@ if ($_SERVER['REQUEST_METHOD'] === "POST"){
             // bruker finnes allerede
             $er_brukernavn_tatt = true;
             $unikt_tall++;
-            $brukernavn = $brukernavn . $unikt_tall;
+            $brukernavn = $originalt_brukernavn . $unikt_tall;
         } else {
             // fant et unikt navn!
             $er_brukernavn_tatt = false;
         }
-
-    } while ($er_brukernavn_tatt);
-
-    // sjekker om brukernavn har blitt endret etter brukeren skrev det inn og gir en error melding
-    if($er_brukernavn_tatt) {
-        $error = "Brukernavnet er tatt. Bruker blir registrert med navnet: " . $brukernavn;
     }
 
     // håndter opplastning av profilbilder
@@ -61,7 +70,8 @@ if ($_SERVER['REQUEST_METHOD'] === "POST"){
     $stmt->bind_param("ssss", $brukernavn, $epostadresse, $passord, $profilbilde);
 
     if($stmt->execute()) {
-        echo "Bruker er registrert.";
+        $_SESSION['nylig_registrert_brukernavn'] = $brukernavn;
+        $error = "Bruker er registrert med brukernavnet $brukernavn.";
         header("Location: login.php");
         exit;
     } else {
@@ -72,7 +82,7 @@ if ($_SERVER['REQUEST_METHOD'] === "POST"){
 
 <!DOCTYPE html>
 <html lang="no">
-    <html>
+    <head>
         <title>Ord På Nett - Registrer</title>
         <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 
@@ -84,7 +94,7 @@ if ($_SERVER['REQUEST_METHOD'] === "POST"){
         <link rel="preconnect" href="https://fonts.googleapis.com">
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
         <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:ital,wght@0,100..700;1,100..700&display=swap" rel="stylesheet">
-    </html>
+    </head>
 
     <body>
         <div class="authentication-container" id="registrer-container">
