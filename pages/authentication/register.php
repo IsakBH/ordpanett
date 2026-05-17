@@ -5,6 +5,7 @@ session_start();
 // håndter registrering
 if ($_SERVER['REQUEST_METHOD'] === "POST"){
     $originalt_brukernavn = $_POST['brukernavn'];
+    $brukernavn = $originalt_brukernavn;
     $epostadresse = $_POST['epost'];
     $passord = password_hash($_POST['passord'], PASSWORD_BCRYPT);
     $profilbilde = 'default.png';
@@ -18,7 +19,7 @@ if ($_SERVER['REQUEST_METHOD'] === "POST"){
     $result = $stmt->get_result();
     $result = $result->fetch_row();
 
-    if($result[0]){
+    if($result){
         echo "Brukernavn finnes allerede, går videre og lager nytt brukernavn";
         $er_brukernavn_tatt = true;
     } else {
@@ -29,7 +30,7 @@ if ($_SERVER['REQUEST_METHOD'] === "POST"){
     while ($er_brukernavn_tatt){
         $sql = "select count(username) as antall from users where username = ?;";
         $stmt = $mysqli->prepare($sql);
-        $stmt->bind_param("s", $originalt_brukernavn);
+        $stmt->bind_param("s", $brukernavn);
         $stmt->execute();
 
         // sjekker hvis count er større enn null, som da betyr at brukernavnet er tatt :(
