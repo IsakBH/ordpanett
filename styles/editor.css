@@ -22,6 +22,8 @@
     overflow-x: hidden;
     background-color: #f0f6fc;
     scrollbar-color: #8ac8ff transparent;
+    box-shadow: inset #c6ddf4 0px 0px 6px;
+
 
     font-family: inherit;
     ul,
@@ -46,7 +48,13 @@
     user-select: none;
     font-size: 40px;
     font-weight: 500;
-    background: linear-gradient(to right, #5091F6, #4285F4 30%, #4674C2, #3C67B6);
+    background: linear-gradient(
+        to right,
+        #5091f6,
+        #4285f4 30%,
+        #4674c2,
+        #3c67b6
+    );
     -webkit-background-clip: text;
     background-clip: text;
     color: transparent;
@@ -60,114 +68,68 @@
 }
 
 hr {
-  height: 25px;
-  width: 1px;
-  color: lightgrey;
+    height: 25px;
+    width: 1px;
+    color: lightgrey;
 }
 
 /* Main Editor Toolbar */
 #main-editor-toolbar {
-  display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-  justify-content: center;
-  gap: 15px;
-  padding: 10px;
-  border: 1px solid #e0e0e0;
-  border-radius: 10px;
-  background-color: #f0f6fc;
-  scrollbar-color: #8ac8ff transparent;
-}
-
-input[type=color] {
-  -webkit-appearance: none;
-  -moz-appearance: none;
-  appearance: none;
-  background-color: transparent;
-  width: 28px;
-  height: 28px;
-  border: none;
-  cursor: pointer;
-  border-radius: 10px;
-}
-input[type=color]::-webkit-color-swatch-wrapper {
-  padding: 0;
-}
-input[type=color]::-webkit-color-swatch {
-  border: none;
-  border-radius: 10px;
-}
-input[type=color]::-moz-color-swatch {
-  border: none;
-  border-radius: 10px;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    gap: 15px;
+    padding: 10px;
+    border: 1px solid #e0e0e0;
+    border-radius: 10px;
+    background-color: #f0f6fc;
+    scrollbar-color: #8ac8ff transparent;
+    box-shadow: inset #c6ddf4 0px 0px 6px;
 }
 
 button {
-  height: 35px;
-  width: 35px;
-  display: grid;
-  place-items: center;
-  border-radius: 10px;
-  border: 1px solid #E0E0E0;
-  background-color: rgb(218.75, 233.25, 247.75);
-  outline: none;
-  color: #020929;
-  transition: transform 0.2s ease;
-}
-button:hover {
-  background-color: rgb(197.5, 220.5, 243.5);
-  transform: translateY(-2px);
-  box-shadow: 0px 2px 2px #ccc;
-  border-color: #C5D2DF;
-}
-button:active {
-  transform: translateY(3px);
-  background-color: rgb(176.25, 207.75, 239.25);
+    height: 35px;
+    width: 35px;
+    display: grid;
+    place-items: center;
+    border-radius: 10px;
+    border: 1px solid #e0e0e0;
+    background-color: rgb(218.75, 233.25, 247.75);
+    outline: none;
+    color: #020929;
+    transition: transform 0.2s ease;
+    box-shadow: inset #c6ddf4 0px 0px 6px;
+    &:hover {
+        background-color: rgb(197.5, 220.5, 243.5);
+        box-shadow: 0px 2px 2px #ccc;
+        border-color: #c5d2df;
+    }
+    &:hover {
+        transform: translateY(3px);
+        background-color: rgb(176.25, 207.75, 239.25);
+    }
 }
 
 select {
-  color: #020929;
-  background-color: rgb(218.75, 233.25, 247.75);
-  padding: 7px;
-  text-decoration: none;
-  border: 1px solid #E0E0E0;
-  border-radius: 10px;
-  transition: transform 0.2s ease;
-}
-select:hover {
-  background-color: rgb(197.5, 220.5, 243.5);
-  transform: translateY(-2px);
-  box-shadow: 0px 2px 2px #ccc;
-  border-color: #C5D2DF;
-}
-select:active {
-  transform: translateY(3px);
-  background-color: rgb(176.25, 207.75, 239.25);
+    color: #020929;
+    background-color: rgb(218.75, 233.25, 247.75);
+    padding: 7px;
+    text-decoration: none;
+    border: 1px solid #e0e0e0;
+    border-radius: 10px;
+    transition: transform 0.2s ease;
+    &:hover {
+        background-color: rgb(197.5, 220.5, 243.5);
+        box-shadow: 0px 2px 2px #ccc;
+        border-color: #c5d2df;
+    }
+    &:active {
+        transform: translateY(3px);
+        background-color: rgb(176.25, 207.75, 239.25);
+    }
 }
 
 option {
-  border-radius: 10px;
-}
-
-.options label,
-.options select {
-  font-family: "Poppins", sans-serif;
-}
-
-.input-wrapper {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-}
-
-input[type=color] {
-  -webkit-appearance: none;
-  -moz-appearance: none;
-  appearance: none;
-  background-color: transparent;
-  width: 28px;
-  height: 28px;
-  border: 1px solid #E0E0E0;
-  cursor: pointer;
-  border-radius: 10px;
+    border-radius: 10px;
 }
