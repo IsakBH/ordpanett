@@ -102,26 +102,25 @@ hr {
     -webkit-overflow-scrolling: touch;
     white-space: nowrap;
     scrollbar-width: thin;
-}
-
-button {
-    height: 35px;
-    min-width: 35px;
-    display: grid;
-    place-items: center;
-    border-radius: 10px;
-    border: 1px solid #e0e0e0;
-    background-color: rgb(218.75, 233.25, 247.75);
-    outline: none;
-    color: #020929;
-    box-shadow: inset #c6ddf4 0px 0px 6px;
-    &:hover {
-        background-color: #b0cfef;
-        border-color: #c5d2df;
-        box-shadow: inset #9bc2eb 0px 0px 6px;
-    }
-    &:active {
-        background-color: #86b5e6;
+    button {
+        height: 35px;
+        min-width: 35px;
+        display: grid;
+        place-items: center;
+        border-radius: 10px;
+        border: 1px solid #e0e0e0;
+        background-color: rgb(218.75, 233.25, 247.75);
+        outline: none;
+        color: #020929;
+        box-shadow: inset #c6ddf4 0px 0px 6px;
+        &:hover {
+            background-color: #b0cfef;
+            border-color: #c5d2df;
+            box-shadow: inset #9bc2eb 0px 0px 6px;
+        }
+        &:active {
+            background-color: #86b5e6;
+        }
     }
 }
 
