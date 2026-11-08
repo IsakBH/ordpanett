@@ -1,0 +1,56 @@
+#main-editor-container {
+    background-color: #ffffff;
+    width: 60%;
+    height: 100%;
+    padding: 50px 30px;
+    position: absolute;
+    transform: translate(-50%, -50%);
+    left: 50%;
+    top: 50%;
+    border-radius: 0px;
+    transition: height 0.15s;
+    filter: drop-shadow(0 0 15px grey);
+}
+
+#main-editor-text-input {
+    margin-top: 5px;
+    padding: 10px;
+    border: 1px solid #e0e0e0;
+    height: calc(100% - 180px);
+    border-radius: 10px;
+    overflow-y: auto;
+    overflow-x: hidden;
+    background-color: #f0f6fc;
+    scrollbar-color: #8ac8ff transparent;
+
+    font-family: inherit;
+    ul,
+    ol {
+        padding-left: 40px;
+        margin: 0;
+    }
+    &:focus {
+        outline: none;
+    }
+
+    img {
+        border-radius: 10px;
+        border: none;
+        max-width: 100%;
+        max-height: 500px;
+    }
+}
+
+#main-editor-heading {
+    text-align: center;
+    user-select: none;
+    font-size: 40px;
+    font-weight: 500;
+    background: linear-gradient(to right, #5091F6, #4285F4 30%, #4674C2, #3C67B6);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    &:hover {
+        cursor: pointer;
+    }
+}
