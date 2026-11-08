@@ -11,6 +11,21 @@
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css" />
 </head>
 <body>
+    <div id="document-manager-container">
+        <h3>Mine dokumenter</h3>
+        <button id="new-document-button">
+            <i class="fa-solid fa-plus"></i>
+            Nytt Ord dokument
+        </button>
+        <div id="document-manager-search-container">
+            <i class="fa-solid fa-search"></i>
+            <input type="text" id="document-manager-search-button" placeholder="Søk i dokumenter...">
+        </div>
+        <div id="document-manager-document-list-container">
+            <ul id="document-manager-document-list"></ul>
+        </div>
+    </div>
+
     <div id="main-editor-container">
         <h1 id="main-editor-heading">Ord På Nett 2</h1>
 
@@ -111,6 +126,14 @@
 
         <div id="main-editor-text-input" contenteditable="true">
             <p id="main-editor-text-input-placeholder-text">Hei! Her kan du skrive ting :)</p>
+        </div>
+
+        <div id="main-editor-footer">
+            <div>
+                <span id="word-counter">0 ord</span>
+                <span id="character-counter">0 tegn</span>
+            </div>
+            <a id="version">v1.0.0</a>
         </div>
     </div>
 </body>

@@ -1,6 +1,7 @@
 #main-editor-container {
     background-color: #ffffff;
     width: 60%;
+    min-width: 900px;
     height: 100%;
     padding: 50px 30px;
     position: absolute;
@@ -73,12 +74,23 @@ hr {
     color: lightgrey;
 }
 
+#main-editor-footer {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 5px;
+    gap: 15px;
+    padding: 10px;
+    border: 1px solid #e0e0e0;
+    border-radius: 10px;
+    background-color: #f0f6fc;
+    box-shadow: inset #c6ddf4 0px 0px 6px;
+}
+
 /* Main Editor Toolbar */
 #main-editor-toolbar {
     display: flex;
-    flex-wrap: wrap;
+    flex-wrap: nowrap;
     align-items: center;
-    justify-content: center;
     gap: 15px;
     padding: 10px;
     border: 1px solid #e0e0e0;
@@ -86,11 +98,15 @@ hr {
     background-color: #f0f6fc;
     scrollbar-color: #8ac8ff transparent;
     box-shadow: inset #c6ddf4 0px 0px 6px;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    white-space: nowrap;
+    scrollbar-width: thin;
 }
 
 button {
     height: 35px;
-    width: 35px;
+    min-width: 35px;
     display: grid;
     place-items: center;
     border-radius: 10px;
@@ -98,16 +114,14 @@ button {
     background-color: rgb(218.75, 233.25, 247.75);
     outline: none;
     color: #020929;
-    transition: transform 0.2s ease;
     box-shadow: inset #c6ddf4 0px 0px 6px;
     &:hover {
-        background-color: rgb(197.5, 220.5, 243.5);
-        box-shadow: 0px 2px 2px #ccc;
+        background-color: #b0cfef;
         border-color: #c5d2df;
+        box-shadow: inset #9bc2eb 0px 0px 6px;
     }
-    &:hover {
-        transform: translateY(3px);
-        background-color: rgb(176.25, 207.75, 239.25);
+    &:active {
+        background-color: #86b5e6;
     }
 }
 
