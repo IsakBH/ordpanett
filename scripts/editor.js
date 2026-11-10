@@ -57,6 +57,16 @@ toolbar_buttons.forEach((button) => {
     })
 })
 
+link_toolbar_button.addEventListener("click", () => {
+    let user_link = prompt("Skriv inn en URL");
+    if (/https/i.test(user_link)) { // hvis link allerede har https
+        modify_text_formatting("createLink", false, user_link);
+    } else { // legg til https og bruk den
+        user_link = "https://" + user_link;
+        modify_text_formatting("createLink", false, user_link);
+    }
+});
+
 main_editor_text_input.addEventListener("keyup", () => {
     save_document_to_localstorage();
 })
