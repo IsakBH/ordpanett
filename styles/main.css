@@ -11,7 +11,7 @@ html {
 }
 
 body {
-    background-image: url("../assets/OrdPåNettBanner.png");
+    background-image: url("../assets/ordpanett_background_banner.png");
     display: flex;
     justify-content: center;
     align-items: center;

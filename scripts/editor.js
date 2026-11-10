@@ -24,8 +24,11 @@ const document_manager_document_list = document.getElementById('document-manager
 // main text input and its relatives
 const main_editor_text_input = document.getElementById('main-editor-text-input');
 const main_editor_text_input_placeholder_text = document.getElementById('main-editor-text-input-placeholder-text');
+const main_editor_text_input_content = main_editor_text_input.innerHTML;
 
 // main container footer & company
 const main_editor_footer = document.getElementById('main-editor-footer');
 const main_editor_footer_word_counter = document.getElementById('main-editor-footer-word-counter');
 const main_editor_footer_character_counter = document.getElementById('main-editor-footer-character-counter');
+
+console.log(main_editor_text_input_content);
