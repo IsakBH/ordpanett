@@ -1,22 +1,6 @@
 // buttons in the toolbar
-const undo_toolbar_button = document.getElementById('undo-toolbar-button');
-const redo_toolbar_button = document.getElementById('redo-toolbar-button');
-const bold_toolbar_button = document.getElementById('bold-toolbar-button');
-const italic_toolbar_button = document.getElementById('italic-toolbar-button');
-const underline_toolbar_button = document.getElementById('underline-toolbar-button');
-const strikethrough_toolbar_button = document.getElementById('strikethrough-toolbar-button');
 const link_toolbar_button = document.getElementById('link-toolbar-button');
-const unlink_toolbar_button = document.getElementById('unlink-toolbar-button');
-const ordered_list_toolbar_button = document.getElementById('ordered-list-toolbar-button');
-const unordered_list_toolbar_button = document.getElementById('unordered-list-toolbar-button');
-const justify_left_toolbar_button = document.getElementById('justify-left-toolbar-button');
-const justify_center_toolbar_button = document.getElementById('justify-center-toolbar-button');
-const justify_right_toolbar_button = document.getElementById('justify-right-toolbar-button');
-const save_file_toolbar_button = document.getElementById('save-file-toolbar-button');
-const upload_file_toolbar_button = document.getElementById('upload-file-toolbar-button');
-const print_document_toolbar_button = document.getElementById('print-document-toolbar-button');
-
-const toolbar_buttons = document.querySelectorAll('.toolbar-button');
+const toolbar_buttons = document.querySelectorAll('.toolbar-button'); // alle knappene
 
 // buttons and other elements in document manager
 const document_manager_new_document_button = document.getElementById('document-manager-new-document-button');
@@ -31,6 +15,8 @@ const main_editor_text_input_placeholder_text = document.getElementById('main-ed
 const main_editor_footer = document.getElementById('main-editor-footer');
 const main_editor_footer_word_counter = document.getElementById('main-editor-footer-word-counter');
 const main_editor_footer_character_counter = document.getElementById('main-editor-footer-character-counter');
+
+
 
 function save_document_to_localstorage() {
     const text_input_contents = main_editor_text_input.innerHTML;
@@ -59,11 +45,13 @@ toolbar_buttons.forEach((button) => {
 
 link_toolbar_button.addEventListener("click", () => {
     let user_link = prompt("Skriv inn en URL");
-    if (/https/i.test(user_link)) { // hvis link allerede har https
-        modify_text_formatting("createLink", false, user_link);
-    } else { // legg til https og bruk den
-        user_link = "https://" + user_link;
-        modify_text_formatting("createLink", false, user_link);
+    if(user_link) {
+        if (/https/i.test(user_link)) { // hvis link allerede har https
+            modify_text_formatting("createLink", false, user_link);
+        } else { // legg til https og bruk den
+            user_link = "https://" + user_link;
+            modify_text_formatting("createLink", false, user_link);
+        }
     }
 });
 
