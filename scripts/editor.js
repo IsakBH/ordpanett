@@ -24,11 +24,28 @@ const document_manager_document_list = document.getElementById('document-manager
 // main text input and its relatives
 const main_editor_text_input = document.getElementById('main-editor-text-input');
 const main_editor_text_input_placeholder_text = document.getElementById('main-editor-text-input-placeholder-text');
-const main_editor_text_input_content = main_editor_text_input.innerHTML;
 
 // main container footer & company
 const main_editor_footer = document.getElementById('main-editor-footer');
 const main_editor_footer_word_counter = document.getElementById('main-editor-footer-word-counter');
 const main_editor_footer_character_counter = document.getElementById('main-editor-footer-character-counter');
 
-console.log(main_editor_text_input_content);
+function save_document_to_localstorage() {
+    const text_input_contents = main_editor_text_input.innerHTML;
+    localStorage.setItem("document_text_contents", text_input_contents);
+    console.log("Dokumentet er lagret til localstorage :)");
+}
+
+function load_document_from_localstorage() {
+    const document_text_contents = localStorage.getItem("document_text_contents");
+    main_editor_text_input.innerHTML = document_text_contents;
+    console.log("Dokumentets innhold er lastet fra localstorage :)");
+}
+
+main_editor_text_input.addEventListener("keyup", () => {
+    save_document_to_localstorage();
+})
+
+window.onload = () => {
+    load_document_from_localstorage();
+}
