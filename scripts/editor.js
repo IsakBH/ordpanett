@@ -16,6 +16,8 @@ const save_file_toolbar_button = document.getElementById('save-file-toolbar-butt
 const upload_file_toolbar_button = document.getElementById('upload-file-toolbar-button');
 const print_document_toolbar_button = document.getElementById('print-document-toolbar-button');
 
+const toolbar_buttons = document.querySelectorAll('.toolbar-button');
+
 // buttons and other elements in document manager
 const document_manager_new_document_button = document.getElementById('document-manager-new-document-button');
 const document_manager_search_button = document.getElementById('document-manager-search-button');
@@ -41,6 +43,19 @@ function load_document_from_localstorage() {
     main_editor_text_input.innerHTML = document_text_contents;
     console.log("Dokumentets innhold er lastet fra localstorage :)");
 }
+
+// logikken bak formattering
+function modify_text_formatting(command, default_ui, value) {
+    document.execCommand(command, default_ui, value); // command = f.eks bold/italic, default_ui = har nettleseren default ui for denne actionen/kommandoen, og value = f.eks font size = 12, osv.
+};
+
+toolbar_buttons.forEach((button) => {
+    button.addEventListener('click', (e) => {
+        e.preventDefault();
+        modify_text_formatting(button.value, false, null);
+        main_editor_text_input.focus();
+    })
+})
 
 main_editor_text_input.addEventListener("keyup", () => {
     save_document_to_localstorage();

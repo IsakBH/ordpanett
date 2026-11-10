@@ -34,10 +34,10 @@
         <div id="main-editor-toolbar"> <!--  Toolbaren-->
 
             <!-- undo og redo -->
-            <button id="undo-toolbar-button" class="toolbar-button" title="Angre (undo)">
+            <button id="undo-toolbar-button" class="toolbar-button" value="undo" title="Angre (undo)">
                 <i class="fa-solid fa-rotate-left"></i>
             </button>
-            <button id="redo-toolbar-button" class="toolbar-button" title="Gjør om/angre angringen (redo)">
+            <button id="redo-toolbar-button" class="toolbar-button" value="redo" title="Gjør om/angre angringen (redo)">
                 <i class="fa-solid fa-rotate-right"></i>
             </button>
 
@@ -47,16 +47,16 @@
             <!--<select id="fontSize" class="adv-toolbar-button"></select>-->
 
             <!-- tekst  formaterings greier -->
-            <button id="bold-toolbar-button" class="toolbar-button">
+            <button id="bold-toolbar-button" class="toolbar-button" value="bold">
                 <i class="fa-solid fa-bold"></i>
             </button>
-            <button id="italic-toolbar-button" class="toolbar-button">
+            <button id="italic-toolbar-button" class="toolbar-button" value="italic">
                 <i class="fa-solid fa-italic"></i>
             </button>
-            <button id="underline-toolbar-button" class="toolbar-button">
+            <button id="underline-toolbar-button" class="toolbar-button" value="underline">
                 <i class="fa-solid fa-underline"></i>
             </button>
-            <button id="strikethrough-toolbar-button" class="toolbar-button">
+            <button id="strikethrough-toolbar-button" class="toolbar-button" value="strikethrough">
                 <i class="fa-solid fa-strikethrough"></i>
             </button>
 
@@ -75,31 +75,31 @@
             <hr>-->
 
             <!-- hyper link -->
-            <button id="link-toolbar-button" class="toolbar-button">
+            <button id="link-toolbar-button" class="advanced-toolbar-button"> <!-- Har egen funksjonalitet, bruker ikke execCommand -->
                 <i class="fa fa-link"></i>
             </button>
-            <button id="unlink-toolbar-button" class="toolbar-button">
+            <button id="unlink-toolbar-button" class="toolbar-button" value="unlink">
                 <i class="fa fa-unlink"></i>
             </button>
 
             <!-- liste knapper -->
-            <button id="ordered-list-toolbar-button" class="toolbar-button">
+            <button id="ordered-list-toolbar-button" class="toolbar-button" value="insertOrderedList">
                 <div class="fa-solid fa-list-ol"></div>
             </button>
-            <button id="unordered-list-toolbar-button" class="toolbar-button">
+            <button id="unordered-list-toolbar-button" class="toolbar-button" value="insertUnorderedList">
                 <i class="fa-solid fa-list"></i>
             </button>
 
             <!-- justify content knapper -->
             <hr>
 
-            <button id="justify-left-toolbar-button" class="toolbar-button">
+            <button id="justify-left-toolbar-button" class="toolbar-button" value="justifyLeft">
                 <i class="fa-solid fa-align-left"></i>
             </button>
-            <button id="justify-center-toolbar-button" class="toolbar-button">
+            <button id="justify-center-toolbar-button" class="toolbar-button" value="justifyCenter">
                 <i class="fa-solid fa-align-center"></i>
             </button>
-            <button id="justify-right-toolbar-button" class="toolbar-button">
+            <button id="justify-right-toolbar-button" class="toolbar-button" value="justifyRight">
                 <i class="fa-solid fa-align-right"></i>
             </button>
 
