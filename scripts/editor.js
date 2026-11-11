@@ -16,7 +16,16 @@ const main_editor_footer = document.getElementById('main-editor-footer');
 const main_editor_footer_word_counter = document.getElementById('main-editor-footer-word-counter');
 const main_editor_footer_character_counter = document.getElementById('main-editor-footer-character-counter');
 
-
+// lmfao, https://www.geeksforgeeks.org/javascript/debouncing-in-javascript/
+function delay_timer(original_function, milliseconds_delay) {
+    let timeout;
+    return function (...args) {
+        clearTimeout(timeout);
+        timeout = setTimeout(() => {
+            original_function.apply(this, args);
+        }, milliseconds_delay);
+    }
+}
 
 function save_document_to_localstorage() {
     const text_input_contents = main_editor_text_input.innerHTML;
@@ -56,7 +65,7 @@ link_toolbar_button.addEventListener("click", () => {
 });
 
 main_editor_text_input.addEventListener("keyup", () => {
-    save_document_to_localstorage();
+    delay_timer(save_document_to_localstorage(), 500)
 })
 
 window.onload = () => {
