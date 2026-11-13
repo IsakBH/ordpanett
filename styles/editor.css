@@ -16,6 +16,8 @@
 #main-editor-text-input {
     margin-top: 5px;
     padding: 10px;
+    text-wrap: wrap;
+    word-break: break-all;
     border: 1px solid #e0e0e0;
     height: calc(100% - 180px);
     border-radius: 10px;
