@@ -13,19 +13,10 @@ const main_editor_text_input_placeholder_text = document.getElementById('main-ed
 
 // main container footer & company
 const main_editor_footer = document.getElementById('main-editor-footer');
-const main_editor_footer_word_counter = document.getElementById('main-editor-footer-word-counter');
-const main_editor_footer_character_counter = document.getElementById('main-editor-footer-character-counter');
+const main_editor_footer_word_and_character_counter = document.getElementById('main-editor-footer-word-and-character-counter');
 
-// lmfao, https://www.geeksforgeeks.org/javascript/debouncing-in-javascript/
-function delay_timer(original_function, milliseconds_delay) {
-    let timeout;
-    return function (...args) {
-        clearTimeout(timeout);
-        timeout = setTimeout(() => {
-            original_function.apply(this, args);
-        }, milliseconds_delay);
-    }
-}
+// andre variabler
+let active_document = 1;
 
 function save_document_to_localstorage() {
     const text_input_contents = main_editor_text_input.innerHTML;
@@ -64,10 +55,23 @@ link_toolbar_button.addEventListener("click", () => {
     }
 });
 
-main_editor_text_input.addEventListener("keyup", () => {
-    delay_timer(save_document_to_localstorage(), 500)
+// lmfao, https://www.geeksforgeeks.org/javascript/debouncing-in-javascript/
+function delay_timer(original_function, milliseconds_delay) {
+    let timeout;
+    return function (...args) {
+        clearTimeout(timeout);
+        timeout = setTimeout(() => {
+            original_function.apply(this, args);
+        }, milliseconds_delay);
+    }
+}
+
+main_editor_text_input.addEventListener("keyup", (e) => {
+    update_word_and_character_counters(main_editor_text_input.innerText)
+    delay_timer(save_document_to_localstorage(), 500);
 })
 
 window.onload = () => {
     load_document_from_localstorage();
+    update_word_and_character_counters(main_editor_text_input.innerText);
 }

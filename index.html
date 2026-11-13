@@ -15,7 +15,7 @@
 <body>
     <div id="document-manager-container">
         <h3>Mine dokumenter</h3>
-        <button id="document-manager-new-document-button">
+        <button id="document-manager-new-document-button" onclick="create_new_document()">
             <i class="fa-solid fa-plus"></i>
             Nytt Ord dokument
         </button>
@@ -31,7 +31,8 @@
     <div id="main-editor-container">
         <h1 id="main-editor-heading">Ord På Nett 2</h1>
 
-        <div id="main-editor-toolbar"> <!--  Toolbaren-->
+        <!--  Toolbaren-->
+        <div id="main-editor-toolbar">
 
             <!-- undo og redo -->
             <button id="undo-toolbar-button" class="toolbar-button" value="undo" title="Angre (undo)">
@@ -127,19 +128,21 @@
         </div>
 
         <div id="main-editor-text-input" contenteditable="true">
-            <!--<p id="main-editor-text-input-placeholder-text">Hei! Her kan du skrive ting :)</p>-->
+            <!-- Inni her vises dokumenter i OPN. De lastes inn fra Javascripten. -->
         </div>
 
         <div id="main-editor-footer">
-            <div>
+            <!--<div>
                 <span id="main-editor-footer-word-counter">0 ord</span>
                 <span id="main-editor-footer-character-counter">0 tegn</span>
-            </div>
+            </div>-->
+            <span id="main-editor-footer-word-and-character-counter">0 ord 0 tegn</span>
             <a id="main-editor-footer-version-counter">v1.0.0</a>
         </div>
     </div>
 
     <script src="scripts/editor.js"></script>
     <script async src="scripts/keybinds.js"></script>
+    <script async src="scripts/word-counter.js"></script>
 </body>
 </html>
