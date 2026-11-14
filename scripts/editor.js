@@ -66,7 +66,7 @@ function delay_timer(original_function, milliseconds_delay) {
     }
 }
 
-main_editor_text_input.addEventListener("keyup", (e) => {
+main_editor_text_input.addEventListener("keyup", () => {
     update_word_and_character_counters(main_editor_text_input.innerText)
     delay_timer(save_document_to_localstorage(), 500);
 })

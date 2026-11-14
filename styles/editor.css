@@ -24,9 +24,8 @@
     overflow-y: auto;
     overflow-x: hidden;
     background-color: #f0f6fc;
-    scrollbar-color: #8ac8ff transparent;
+    scrollbar-color: #4583EA transparent;
     box-shadow: inset #c6ddf4 0px 0px 6px;
-
 
     font-family: inherit;
     ul,
