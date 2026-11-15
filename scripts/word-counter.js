@@ -4,7 +4,7 @@ function update_word_and_character_counters(text_selection) {
         count_words_and_characters(text_selection); // object destructuring B)
 
     main_editor_footer_word_and_character_counter.innerHTML = `${word_count} ord, ${character_count} tegn`;
-    console.log(`${word_count} ord, ${character_count} tegn`);
+    // console.log(`${word_count} ord, ${character_count} tegn`);
 }
 
 // teller ord og bokstaver
@@ -33,4 +33,6 @@ document.addEventListener("selectionchange", () => {
     } else {
         update_word_and_character_counters(main_editor_text_input.innerText);
     }
+
+    get_text_selection_formatting_info();
 });

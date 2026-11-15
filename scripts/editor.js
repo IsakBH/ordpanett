@@ -66,6 +66,54 @@ function delay_timer(original_function, milliseconds_delay) {
     }
 }
 
+function get_text_selection_formatting_info() {
+    const selection = window.getSelection() // henter data om selectionen (text selection caret)
+
+    let current_node = selection.anchorNode;
+    if (current_node.nodeType === Node.TEXT_NODE) {
+        current_node = current_node.parentElement;
+    } else if (!current_node) { // hvis caret ikke er i noe node
+        return;
+    }
+
+    const toolbar_ids_and_tags = [
+        { button_id: 'bold-toolbar-button', tags: ['B', 'STRONG'] },
+        { button_id: 'italic-toolbar-button', tags: ['I', 'EM'] },
+        { button_id: 'underline-toolbar-button', tags: ['U'] },
+        { button_id: 'strikethrough-toolbar-button', tags: ['strike', 'S'] },
+        { button_id: 'link-toolbar-button', tags: ['A'] },
+        { button_id: 'ordered-list-toolbar-button', tags: ['OL'] },
+        { button_id: 'unordered-list-toolbar-button', tags: ['UL'] },
+        // { button_id: 'justify-left-toolbar-button', tags: [] },
+        // { button_id: 'justify-center-button', tags: [] },
+        // { button_id: 'justify-right-button', tags: [] },
+    ]
+
+    toolbar_ids_and_tags.forEach(button => {
+        const button_id = document.getElementById(button.button_id);
+        if (!button_id) {
+            return;
+        }
+
+        const is_formatted = button.tags.some(tag => current_node.closest(tag));
+
+        if (is_formatted) {
+            button_id.classList.add('active-button');
+        } else {
+            button_id.classList.remove('active-button');
+        }
+    })
+}
+
+// gjør denne bedre!!
+function button_highlighter(class_name) {
+    class_name.forEach((button) => {
+        button.addEventListener('click', () => {
+            button.classList.toggle('active-button');
+        })
+    })
+}
+
 main_editor_text_input.addEventListener("keyup", () => {
     update_word_and_character_counters(main_editor_text_input.innerText)
     delay_timer(save_document_to_localstorage(), 500);

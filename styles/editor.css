@@ -125,6 +125,11 @@ hr {
     }
 }
 
+.active-button {
+    background-color: #b0d0ee !important;
+    box-shadow: inset #9bc4e9 0px 0px 6px !important;
+}
+
 select {
     color: #020929;
     background-color: rgb(218.75, 233.25, 247.75);
