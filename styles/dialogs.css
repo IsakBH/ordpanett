@@ -1,0 +1,61 @@
+/*The dialog itself*/
+dialog {
+    margin: auto; /* Margin auto gjør at transparency ikke funker? */
+    border-radius: 15px;
+    border: none;
+    filter: drop-shadow(0 0 6px rgba(67, 67, 67, 0.5));
+    padding: 30px;
+    /*background: rgba(29, 29, 29, 0.30);*/
+    /*background: #1D1D1D;*/
+    background-color: white;
+    color: black;
+    width: 450px;
+    height: 350px;
+}
+
+::backdrop {
+    background-color: rgba(67, 67, 67, 0.5);
+}
+
+#new-local-document-container {
+    display: flex;
+    justify-content: center;
+    text-align: center;
+
+    label {
+        margin: 5px;
+    }
+
+    input {
+        margin: 5px;
+    }
+}
+
+/*Buttons in the dialog
+#close-new-document-dialog-button {
+    width: 100px;
+    padding: 5px;
+    font-weight: bold;
+}*/
+
+#close-new-document-dialog-button {
+    position: absolute;
+    font-weight: bold;
+    top: 0;
+    right: 0;
+    color: #fafafa;
+    margin: 10px;
+    padding: 10px;
+    width: fit-content;
+    height: auto;
+    background-color: #4381E7;
+    border-radius: 10px;
+    border: none;
+    font-size: 1.5rem;
+    &:hover {
+        filter: brightness(90%);
+    }
+    &:active {
+        filter: brightness(80%);
+    }
+}

@@ -8,14 +8,29 @@
 	<link rel="stylesheet" href="styles/main.css">
 	<link rel="stylesheet" href="styles/editor.css">
 	<link rel="stylesheet" href="styles/documentmanager.css">
+	<link rel="stylesheet" href="styles/dialogs.css">
 
 	<!-- Fonter og ikoner -->
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css" />
 </head>
 <body>
+    <dialog id="new-local-document-dialog" closedby="any">
+        <h2>Opprett nytt dokument</h2>
+        <button id="close-new-document-dialog-button" onclick="close_new_document_button();"><i class="fa-regular fa-circle-xmark"></i></button>
+
+        <div id="new-local-document-container">
+            <form action="" method="post" id="new-local-document-form">
+                <label">Dokument navn</label> <br>
+                <input id="new-local-document-form-document-name" type="text" placeholder="Dritkult dokument #2" required> <br>
+
+                <input id="new-local-document-form-submit" type="submit">
+            </form>
+        </div>
+    </dialog>
+
     <div id="document-manager-container">
         <h3 id="document-manager-container-header">Mine dokumenter</h3>
-        <button id="document-manager-new-document-button" onclick="create_new_document()">
+        <button id="document-manager-new-document-button" command="show-modal" commandfor="new-local-document-dialog">
             <i class="fa-solid fa-plus"></i>
             Nytt Ord dokument
         </button>

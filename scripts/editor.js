@@ -52,9 +52,13 @@ function save_document_to_localstorage() {
 }
 
 function load_document_from_localstorage() {
-    const document_text_contents = localStorage.getItem("document_text_contents");
-    main_editor_text_input.innerHTML = document_text_contents;
-    console.log("Dokumentets innhold er lastet fra localstorage :)");
+    // const document_text_contents = localStorage.getItem("document_text_contents");
+    // main_editor_text_input.innerHTML = document_text_contents;
+    // console.log("Dokumentets innhold er lastet fra localstorage :)");
+}
+
+function create_local_document() {
+
 }
 
 // logikken bak formattering
