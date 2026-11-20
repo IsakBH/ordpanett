@@ -19,11 +19,11 @@
         <button id="close-new-document-dialog-button" command="close" commandfor="new-local-document-dialog"><i class="fa-regular fa-circle-xmark"></i></button>
 
         <div id="new-local-document-container">
-            <form action="" method="post" id="new-local-document-form">
+            <form id="new-local-document-form">
                 <label">Dokument navn</label> <br>
-                <input id="new-local-document-form-document-name" type="text" placeholder="Dritkult dokument #2" required> <br>
+                <input id="new-local-document-form-document-name" name="documentname" type="text" placeholder="Dritkult dokument #2" required> <br>
 
-                <input id="new-local-document-form-submit" type="submit">
+                <input id="new-local-document-form-submit" type="submit" value="Opprett dokument">
             </form>
         </div>
     </dialog>
@@ -157,6 +157,7 @@
     </div>
 
     <script src="scripts/editor.js"></script>
+    <script src="scripts/document-actions.js"></script>
     <script async src="scripts/keybinds.js"></script>
     <script async src="scripts/word-counter.js"></script>
 </body>

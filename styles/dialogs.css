@@ -17,6 +17,15 @@ dialog {
     background-color: rgba(67, 67, 67, 0.5);
 }
 
+input[type='submit']{
+    background-color: #4381E7;
+    padding: 10px;
+    border: none;
+    border-radius: 15px;
+    color: #fafafa;
+    font-weight: bold;
+}
+
 #new-local-document-container {
     display: flex;
     justify-content: center;

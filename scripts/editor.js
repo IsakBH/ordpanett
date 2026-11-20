@@ -15,6 +15,10 @@ const main_editor_text_input_placeholder_text = document.getElementById('main-ed
 const main_editor_footer = document.getElementById('main-editor-footer');
 const main_editor_footer_word_and_character_counter = document.getElementById('main-editor-footer-word-and-character-counter');
 
+// html forms
+const new_local_document_form = document.getElementById('new-local-document-form');
+const create_new_document_dialog = document.getElementById('new-local-document-dialog');
+
 // andre variabler
 let active_document;
 
@@ -43,23 +47,6 @@ const document_object = {
     "last_synced_date": last_synced_date,
 };
 */
-
-function save_document_to_localstorage() {
-    const document_contents = main_editor_text_input.innerHTML;
-
-    localStorage.setItem("document_text_contents", document_contents);
-    console.log("Dokumentet er lagret til localstorage :)");
-}
-
-function load_document_from_localstorage() {
-    // const document_text_contents = localStorage.getItem("document_text_contents");
-    // main_editor_text_input.innerHTML = document_text_contents;
-    // console.log("Dokumentets innhold er lastet fra localstorage :)");
-}
-
-function create_local_document() {
-
-}
 
 // logikken bak formattering
 function modify_text_formatting(command, default_ui, value) {
