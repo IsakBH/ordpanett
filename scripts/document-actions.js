@@ -47,9 +47,9 @@ function create_new_local_document() {
         "last_synced_date": null,
     }
 
-    localStorage.setItem(uuid, document_object);
+    const document_object_json = JSON.stringify(document_object);
+    localStorage.setItem(uuid, document_object_json);
     console.log("Opprettet dokument med navn '" + document_name + "' og UUID '" + uuid + "'");
-    console.log(document_object)
 }
 
 new_local_document_form.addEventListener('submit', (event) => {
