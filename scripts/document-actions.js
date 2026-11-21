@@ -34,6 +34,7 @@ function create_new_local_document() {
     const is_sync_enabled = false;
 
     // create version hash based on current timestamp
+    const version_hash = null;
 
     const document_object = {
         "uuid": uuid,
@@ -45,6 +46,10 @@ function create_new_local_document() {
         "version_hash": version_hash,
         "last_synced_date": null,
     }
+
+    localStorage.setItem(uuid, document_object);
+    console.log("Opprettet dokument med navn '" + document_name + "' og UUID '" + uuid + "'");
+    console.log(document_object)
 }
 
 new_local_document_form.addEventListener('submit', (event) => {
