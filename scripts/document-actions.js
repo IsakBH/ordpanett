@@ -50,6 +50,31 @@ function create_new_local_document() {
     const document_object_json = JSON.stringify(document_object);
     localStorage.setItem(uuid, document_object_json);
     console.log("Opprettet dokument med navn '" + document_name + "' og UUID '" + uuid + "'");
+    load_document_list_from_localstorage()
+}
+
+function load_document_list_from_localstorage() {
+    document_manager_document_list.innerHTML = '';
+    Object.keys(localStorage).forEach((document_uuid) => {
+        const document_object_unparsed = localStorage.getItem(document_uuid)
+        const document_object = JSON.parse(document_object_unparsed);
+
+        const li = document.createElement("li");
+        li.innerHTML = `
+            <div class="document-item" onclick="load_document_from_localstorage('${document_object.uuid}')">
+                <span>${document_object.name}</span>
+            </div>
+            <div class="document-actions">
+                <button class="document_list_document_share_button" onclick="share_document('${document_object.uuid}')" title="Del dokument">
+                    <i class="fa-solid fa-share"></i>
+                </button>
+                <button onclick="delete_document('${document_object.uuid}')" title="Slett dokument">
+                    <i class="fa-solid fa-trash"></i>
+                </button>
+            </div>
+        `;
+        document_manager_document_list.appendChild(li);
+    });
 }
 
 new_local_document_form.addEventListener('submit', (event) => {
