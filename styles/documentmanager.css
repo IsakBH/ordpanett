@@ -9,7 +9,7 @@
   border-right: 1px solid #e0e0e0;
   box-shadow: 2px 0 10px rgba(0, 0, 0, 0.05);
   scrollbar-width: none;
-  scrollbar-color: #8ac8ff transparent;
+  scrollbar-color: #4381E7 transparent;
   overflow: overlay;
   display: flex;
   transition: 0.15s;
@@ -111,6 +111,7 @@
 #document-manager-document-list {
     flex-grow: 1;
     overflow-y: auto;
+    overflow-x: hidden;
     margin: 0;
     padding: 0;
     list-style: none;
@@ -119,25 +120,26 @@
       justify-content: space-between;
       align-items: center;
       padding: 8px;
-      margin-bottom: 8px;
+      min-height: 51px;
+      margin-bottom: 4px;
       background: #F0F6FC;
-      border-radius: 8px;
-      box-shadow: 0 0px 5px rgba(0, 0, 0, 0.1);
-      backdrop-filter: blur(6px);
-      -webkit-backdrop-filter: blur(6px);
-      transition: all 0.2s ease;
+      box-shadow: inset #c6ddf4 0px 0px 6px;
+      transition: all 0.1s ease;
       border: 1px solid #ddd;
+      border-radius: 8px;
       animation: popin 0.3s;
       width: 100%;
+
       &:hover {
         box-shadow: 4px 0px 0px 0px #E2E2E2;
         border-color: #9f9f9f;
         background: #C6DDF4;
-        width: 95%;
+        /*width: 95%;*/
         .document-actions {
           opacity: 1;
         }
       }
+
       .active-document {
         border: 2px solid #8ac8ff;
         background-color: #C6DDF4;
@@ -148,6 +150,13 @@
           opacity: 1;
         }
       }
+
+      span {
+          max-width: 12ch;
+          text-overflow: ellipsis;
+          overflow: hidden;
+          display: inline-block;
+      }
     }
 }
 
@@ -156,37 +165,42 @@
   gap: 8px;
   opacity: 0.4;
   transition: opacity 0.2s ease;
+  align-self: stretch;
+  align-items: center;
   button {
     width: 30px;
-    height: 30px;
+    height: 95%;
+    min-height: 30px;
     padding: 0;
     font-size: 0.8rem;
     background: white;
     border: 1px solid #ddd;
+    border-radius: 10px;
   }
 }
 
-.delete-document-button {
+.document_list_document_delete_button {
     &:hover {
-      background: #ff4444;
+      background: #e74943;
       color: white;
     }
 }
 
-.share-document-button {
+.document_list_document_share_button {
     &:hover {
-        background: #8AC8FF;
+        background: #4381E7;
+        color: white;
     }
 }
 
 .document-item {
-  flex-grow: 1;
+  /*flex-grow: 1;*/
   padding: 4px 8px;
   cursor: pointer;
   border-radius: 4px;
 }
 .document-item span {
   font-size: 0.9rem;
-  color: #333;
+  color: #181920;
   user-select: none;
 }

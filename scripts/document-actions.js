@@ -68,7 +68,7 @@ function load_document_list_from_localstorage() {
                 <button class="document_list_document_share_button" onclick="share_document('${document_object.uuid}')" title="Del dokument">
                     <i class="fa-solid fa-share"></i>
                 </button>
-                <button onclick="delete_document('${document_object.uuid}')" title="Slett dokument">
+                <button class="document_list_document_delete_button" onclick="delete_document('${document_object.uuid}')" title="Slett dokument">
                     <i class="fa-solid fa-trash"></i>
                 </button>
             </div>
