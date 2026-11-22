@@ -138,7 +138,6 @@ main_editor_text_input.addEventListener("keyup", () => {
 })
 
 window.onload = () => {
-    load_document_from_localstorage();
     update_word_and_character_counters(main_editor_text_input.innerText);
     load_document_list_from_localstorage()
 }

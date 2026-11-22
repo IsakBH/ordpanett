@@ -5,10 +5,23 @@ function save_document_to_localstorage() {
     // console.log("Dokumentet er lagret til localstorage :)");
 }
 
-function load_document_from_localstorage() {
+function load_document_from_localstorage(document_uuid) {
     // const document_text_contents = localStorage.getItem("document_text_contents");
     // main_editor_text_input.innerHTML = document_text_contents;
     // console.log("Dokumentets innhold er lastet fra localstorage :)");
+    const document_object_unparsed = localStorage.getItem(document_uuid)
+    const document_object = JSON.parse(document_object_unparsed);
+    console.log('Fetchet dokument ' + document_object.uuid + ' fra localStorage :)');
+
+    main_editor_text_input.innerHTML = document_object.content;
+    console.log('Erstattet text inputs innhold med nytt dokument :)');
+
+    const url = new URL(window.location.href)
+    url.searchParams.set('document', document_uuid);
+    console.log(url);
+    history.replaceState(document_object, "", url);
+
+    active_document = document_object.uuid;
 }
 
 function create_new_local_document() {
