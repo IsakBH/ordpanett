@@ -18,7 +18,6 @@ function load_document_from_localstorage(document_uuid) {
 
     const url = new URL(window.location.href)
     url.searchParams.set('document', document_uuid);
-    console.log(url);
     history.replaceState(document_object, "", url);
 
     active_document = document_object.uuid;

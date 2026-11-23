@@ -137,7 +137,20 @@ main_editor_text_input.addEventListener("keyup", () => {
     delay_timer(save_document_to_localstorage(), 500);
 })
 
+function check_url_for_document() {
+    console.log("Sjekker URL for dokument ID");
+    const url = new URL(window.location.href)
+    const document_uuid_param = url.searchParams.get("document");
+    if (document_uuid_param) {
+        console.log('Fant dokument i URL GET parametere ' + document_uuid_param);
+        load_document_from_localstorage(document_uuid_param);
+    } else {
+        console.log("Fant ingen dokumenter i URL GET parametere");
+    }
+}
+
 window.onload = () => {
     update_word_and_character_counters(main_editor_text_input.innerText);
     load_document_list_from_localstorage()
+    check_url_for_document()
 }
