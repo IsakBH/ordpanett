@@ -1,14 +1,15 @@
 function save_document_to_localstorage() {
-    // const document_contents = main_editor_text_input.innerHTML;
+    const document_contents = main_editor_text_input.innerHTML;
+    let active_document_object = localStorage.getItem(active_document);
+    active_document_object = JSON.parse(active_document_object);
+    active_document_object.content = document_contents;
+    active_document_object = JSON.stringify(active_document_object);
 
-    // localStorage.setItem("document_text_contents", document_contents);
-    // console.log("Dokumentet er lagret til localstorage :)");
+    localStorage.setItem(active_document, active_document_object);
+    console.log('Lagret dokument til localStorage :)');
 }
 
 function load_document_from_localstorage(document_uuid) {
-    // const document_text_contents = localStorage.getItem("document_text_contents");
-    // main_editor_text_input.innerHTML = document_text_contents;
-    // console.log("Dokumentets innhold er lastet fra localstorage :)");
     const document_object_unparsed = localStorage.getItem(document_uuid)
     const document_object = JSON.parse(document_object_unparsed);
     console.log('Fetchet dokument ' + document_object.uuid + ' fra localStorage :)');
