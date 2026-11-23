@@ -3,8 +3,20 @@ function save_document_to_localstorage() {
     let active_document_object = localStorage.getItem(active_document);
     active_document_object = JSON.parse(active_document_object);
     active_document_object.content = document_contents;
-    active_document_object = JSON.stringify(active_document_object);
 
+    // get current date and time
+    const current_date = new Date();
+    const date_time = current_date.getDate() + "/"
+                    + (current_date.getMonth()+1)  + "/"
+                    + current_date.getFullYear() + " "
+                    + current_date.getHours() + ":"
+                    + current_date.getMinutes() + ":"
+                    + current_date.getSeconds() + ":"
+                    + current_date.getMilliseconds();
+
+    active_document_object.last_modified = date_time;
+
+    active_document_object = JSON.stringify(active_document_object);
     localStorage.setItem(active_document, active_document_object);
     console.log('Lagret dokument til localStorage :)');
 }
