@@ -56,6 +56,9 @@ function create_new_local_document() {
     // get document name from form_data
     const document_name = form_data.get('document_name');
 
+    // tøm inputen i dialogen
+    new_local_document_form_document_name.value = '';
+
     // get current date and time
     const current_date = new Date();
     const date_time = current_date.getDate() + "/"

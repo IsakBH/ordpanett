@@ -18,6 +18,7 @@ const main_editor_footer_word_and_character_counter = document.getElementById('m
 // html forms
 const new_local_document_form = document.getElementById('new-local-document-form');
 const create_new_document_dialog = document.getElementById('new-local-document-dialog');
+const new_local_document_form_document_name = document.getElementById('new-local-document-form-document-name')
 
 // andre variabler
 let active_document;

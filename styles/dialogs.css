@@ -4,48 +4,58 @@ dialog {
     border-radius: 15px;
     border: none;
     filter: drop-shadow(0 0 6px rgba(67, 67, 67, 0.5));
-    padding: 30px;
+    padding: 20px;
     /*background: rgba(29, 29, 29, 0.30);*/
     /*background: #1D1D1D;*/
     background-color: white;
     color: black;
     width: 450px;
-    height: 350px;
 }
 
 ::backdrop {
     background-color: rgba(67, 67, 67, 0.5);
 }
 
+form {
+    width: 100%;
+}
+
+/*input[type='text']*/
+#new-local-document-form-document-name{
+    background-color: #f0f6fc;
+    box-shadow: inset #c6ddf4 0px 0px 6px;
+    font-size: 0.9rem;
+    height: 40px;
+    border: 1px solid #c1c5c8;
+    border-radius: 6px;
+    padding: 5px 8px;
+    width: 100%;
+    margin-top: 6px;
+    &:focus {
+        box-shadow: inset #b7d4f0 0 0 6px;
+        outline: none;
+        font-weight: bold;
+    }
+
+}
+
 input[type='submit']{
     background-color: #4381E7;
     padding: 10px;
     border: none;
-    border-radius: 15px;
+    margin-top: 10px;
+    border-radius: 8px;
     color: #fafafa;
     font-weight: bold;
 }
 
-#new-local-document-container {
-    display: flex;
-    justify-content: center;
-    text-align: center;
-
-    label {
-        margin: 5px;
-    }
-
-    input {
-        margin: 5px;
-    }
+#new-local-document-dialog-header {
+    margin-bottom: 12px;
 }
 
-/*Buttons in the dialog
-#close-new-document-dialog-button {
-    width: 100px;
-    padding: 5px;
-    font-weight: bold;
-}*/
+#new-local-document-container {
+    display: flex;
+}
 
 #close-new-document-dialog-button {
     position: absolute;
