@@ -34,6 +34,17 @@ function load_document_from_localstorage(document_uuid) {
     history.replaceState(document_object, "", url);
 
     active_document = document_object.uuid;
+
+    // fjerner active-document klassen fra alle dokumenter og legger den til i nytt aktivt dokument
+    document.querySelectorAll('#document-manager-document-list li').forEach(document_element => {
+        document_element.classList.remove('active-document');
+    });
+
+    const active_document_element = document.getElementById(document_uuid);
+    if (active_document_element) {
+        active_document_element.classList.add('active-document');
+        console.log("Added active-document class to the current active document");
+    }
 }
 
 function create_new_local_document() {
@@ -98,6 +109,7 @@ function load_document_list_from_localstorage() {
                 </button>
             </div>
         `;
+        li.setAttribute("id", document_uuid);
         document_manager_document_list.appendChild(li);
     });
 }

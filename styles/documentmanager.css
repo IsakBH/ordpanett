@@ -131,10 +131,8 @@
       width: 100%;
 
       &:hover {
-        /*box-shadow: 4px 0px 0px 0px #E2E2E2;*/
         border-color: #b0d0ef;
         background: #d1e3f6;
-        /*box-shadow: inset #b0d0ef 0px 0px 6px;*/
         box-shadow: inset #b7d4f0 0 0 6px, 6px 0 0 0 #e2e2e2;
         width: 95%;
         .document-actions {
@@ -143,21 +141,6 @@
                 border-color: #c5d2df;
                 box-shadow: inset #9bc2eb 0px 0px 6px;
             }
-        }
-        &:active {
-            animation: aktivt-dokument 0.5s;
-        }
-
-      }
-
-      .active-document {
-        border: 2px solid #8ac8ff;
-        background-color: #C6DDF4;
-        filter: drop-shadow(0 0 2px #cccccc);
-        animation: aktivt-dokument 0.5s;
-        animation-fill-mode: forwards;
-        .document-actions {
-          opacity: 1;
         }
       }
 
@@ -168,6 +151,27 @@
           display: inline-block;
           text-wrap: wrap;
           word-break: break-word;
+      }
+    }
+
+    .active-document {
+      border: 2px solid #8dbbe7;
+      background: #d1e3f6;
+      box-shadow: inset #b7d4f0 0 0 6px, 6px 0 0 0 #e2e2e2;
+      filter: drop-shadow(0 0 2px #cccccc);
+      animation: aktivt-dokument 0.5s;
+      animation-fill-mode: forwards;
+      &:hover {
+          border: 2px solid #8dbbe7;
+          background: #d1e3f6;
+      }
+
+      .document-actions {
+          button {
+              background-color: #b0cfef;
+              border-color: #c5d2df;
+              box-shadow: inset #9bc2eb 0px 0px 6px;
+          }
       }
     }
 }
@@ -215,6 +219,8 @@
   padding: 4px 8px;
   cursor: pointer;
   border-radius: 4px;
+  width: 100%;
+  height: 100%;
 }
 .document-item span {
   font-size: 0.9rem;
