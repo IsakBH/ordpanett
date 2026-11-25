@@ -5,16 +5,17 @@ function save_document_to_localstorage() {
     active_document_object.content = document_contents;
 
     // get current date and time
-    const current_date = new Date();
-    const date_time = current_date.getDate() + "/"
-                    + (current_date.getMonth()+1)  + "/"
-                    + current_date.getFullYear() + " "
-                    + current_date.getHours() + ":"
-                    + current_date.getMinutes() + ":"
-                    + current_date.getSeconds() + ":"
-                    + current_date.getMilliseconds();
+    let current_date = new Date();
+    current_date = current_date.getTime();
+    // const date_time = current_date.getDate() + "/"
+    //                 + (current_date.getMonth()+1)  + "/"
+    //                 + current_date.getFullYear() + " "
+    //                 + current_date.getHours() + ":"
+    //                 + current_date.getMinutes() + ":"
+    //                 + current_date.getSeconds() + ":"
+    //                 + current_date.getMilliseconds();
 
-    active_document_object.last_modified = date_time;
+    active_document_object.last_modified = current_date;
 
     active_document_object = JSON.stringify(active_document_object);
     localStorage.setItem(active_document, active_document_object);
@@ -60,14 +61,15 @@ function create_new_local_document() {
     new_local_document_form_document_name.value = '';
 
     // get current date and time
-    const current_date = new Date();
-    const date_time = current_date.getDate() + "/"
-                    + (current_date.getMonth()+1)  + "/"
-                    + current_date.getFullYear() + " "
-                    + current_date.getHours() + ":"
-                    + current_date.getMinutes() + ":"
-                    + current_date.getSeconds() + ":"
-                    + current_date.getMilliseconds();
+    let current_date = new Date();
+    current_date = current_date.getTime();
+    // const date_time = current_date.getDate() + "/"
+    //                 + (current_date.getMonth()+1)  + "/"
+    //                 + current_date.getFullYear() + " "
+    //                 + current_date.getHours() + ":"
+    //                 + current_date.getMinutes() + ":"
+    //                 + current_date.getSeconds() + ":"
+    //                 + current_date.getMilliseconds();
 
     // when syncing is implemented, run a check to see if user has enabled syncing. if so, enable sync and sync immediately on creation
     const is_sync_enabled = false;
@@ -79,8 +81,8 @@ function create_new_local_document() {
         "uuid": uuid,
         "name": document_name,
         "content": null,
-        "last_modified": date_time,
-        "date_created": date_time,
+        "last_modified": current_date,
+        "date_created": current_date,
         "sync_enabled": is_sync_enabled,
         "version_hash": version_hash,
         "last_synced_date": null,
@@ -94,10 +96,18 @@ function create_new_local_document() {
 
 function load_document_list_from_localstorage() {
     document_manager_document_list.innerHTML = '';
+    let sorted_documents = [];
+
     Object.keys(localStorage).forEach((document_uuid) => {
         const document_object_unparsed = localStorage.getItem(document_uuid)
         const document_object = JSON.parse(document_object_unparsed);
+        console.log(document_object);
+        sorted_documents.push(document_object);
+    });
 
+    sorted_documents.sort(function(a, b){return b.last_modified - a.last_modified});
+
+    sorted_documents.forEach((document_object) => {
         const li = document.createElement("li");
         li.innerHTML = `
             <div class="document-item" onclick="load_document_from_localstorage('${document_object.uuid}')">
@@ -112,9 +122,9 @@ function load_document_list_from_localstorage() {
                 </button>
             </div>
         `;
-        li.setAttribute("id", document_uuid);
+        li.setAttribute("id", document_object.uuid);
         document_manager_document_list.appendChild(li);
-    });
+    })
 }
 
 new_local_document_form.addEventListener('submit', (event) => {
