@@ -17,8 +17,15 @@ const main_editor_footer_word_and_character_counter = document.getElementById('m
 
 // html forms
 const new_local_document_form = document.getElementById('new-local-document-form');
+const delete_document_form = document.getElementById('delete-document-form');
+
+// html form inputs
+const new_local_document_form_document_name = document.getElementById('new-local-document-form-document-name');
+const delete_document_form_document_uuid = document.getElementById('delete-document-form-document-uuid');
+
+// html dialogs
 const create_new_document_dialog = document.getElementById('new-local-document-dialog');
-const new_local_document_form_document_name = document.getElementById('new-local-document-form-document-name')
+const delete_document_dialog = document.getElementById('delete-document-dialog');
 
 // andre variabler
 let active_document;

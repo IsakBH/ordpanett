@@ -117,8 +117,8 @@ function load_document_list_from_localstorage() {
                 <button class="document_list_document_share_button" onclick="share_document('${document_object.uuid}')" title="Del dokument">
                     <i class="fa-solid fa-share"></i>
                 </button>
-                <button class="document_list_document_delete_button" onclick="delete_document('${document_object.uuid}')" title="Slett dokument">
-                    <i class="fa-solid fa-trash"></i>
+                <button class="document_list_document_delete_button" onclick="add_document_uuid_to_delete_form('${document_object.uuid}')" command="show-modal" commandfor="delete-document-dialog" title="Slett dokument">
+                    <i class="fa-solid fa-trash-can"></i>
                 </button>
             </div>
         `;
@@ -127,12 +127,33 @@ function load_document_list_from_localstorage() {
     })
 }
 
-function delete_document(document_uuid) {
+function delete_document() {
+    const form_data = new FormData(delete_document_form);
+    const document_uuid = form_data.get('document-uuid');
 
+    console.log('Sletter dokument ' + document_uuid);
+
+    // tømmer valuen i den usynlige text fielden
+    delete_document_form_document_uuid.value = '';
+
+    localStorage.removeItem(document_uuid);
+    console.log('Dokument slettet');
+
+    delete_document_dialog.close();
+    load_document_list_from_localstorage();
+}
+
+function add_document_uuid_to_delete_form(document_uuid) {
+    delete_document_form_document_uuid.value = document_uuid;
 }
 
 new_local_document_form.addEventListener('submit', (event) => {
     event.preventDefault();
     create_new_local_document();
     create_new_document_dialog.close();
+})
+
+delete_document_form.addEventListener('submit', (event) => {
+    event.preventDefault();
+    delete_document();
 })

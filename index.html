@@ -28,6 +28,13 @@
         </div>
     </dialog>
 
+    <dialog id="delete-document-dialog" closedby="any">
+        <form id="delete-document-form">
+            <input id="delete-document-form-document-uuid" name="document-uuid" type="text" hidden>
+            <button id="delete-document-dialog-delete-button" type="submit"><i class="fa-solid fa-trash-can"></i></button>
+        </form>
+    </dialog>
+
     <div id="document-manager-container">
         <h3 id="document-manager-container-header">Mine dokumenter</h3>
         <button id="document-manager-new-document-button" command="show-modal" commandfor="new-local-document-dialog">
