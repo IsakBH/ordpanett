@@ -127,6 +127,10 @@ function load_document_list_from_localstorage() {
     })
 }
 
+function delete_document(document_uuid) {
+
+}
+
 new_local_document_form.addEventListener('submit', (event) => {
     event.preventDefault();
     create_new_local_document();
