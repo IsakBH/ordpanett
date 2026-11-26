@@ -97,12 +97,29 @@ function create_new_local_document() {
 function load_document_list_from_localstorage() {
     document_manager_document_list.innerHTML = '';
     let sorted_documents = [];
+    const document_object_structure_example = { // dette objektet brukes for sammenligning av object struktur med objektene hentet fra localstorage i funksjonen under :D
+        "uuid": "dette-er-en-eksempel-uuid",
+        "name": "dette er et eksempel navn, håper dette funker lmao",
+        "content": "her kommer contentet!!",
+        "last_modified": "dette er en fin dato! 676767!!",
+        "date_created": "enda en fin dato her, gitt!",
+        "sync_enabled": "jepsi pepsi, det er det! selvfølgelig vil jeg gi all dataen min til isak!!!",
+        "version_hash": "wow jeg er en hash av versjonen til dokumentet",
+        "last_synced_date": "syncet i dag bro, nå nettopp, selvfølgelig",
+    }
 
     Object.keys(localStorage).forEach((document_uuid) => {
         const document_object_unparsed = localStorage.getItem(document_uuid)
-        const document_object = JSON.parse(document_object_unparsed);
-        console.log(document_object);
-        sorted_documents.push(document_object);
+
+        try {
+            const document_object = JSON.parse(document_object_unparsed);
+            if (check_if_object_has_same_keys(document_object_structure_example, document_object)) {
+                console.log(document_object);
+                sorted_documents.push(document_object);
+            }
+        } catch (e) {
+            return console.error("Ukjent localStorage entry funnet. Objekt er ikke generert av OPN. Hopper over. Feilmelding: " + e);
+        }
     });
 
     sorted_documents.sort(function(a, b){return b.last_modified - a.last_modified});
@@ -125,6 +142,15 @@ function load_document_list_from_localstorage() {
         li.setAttribute("id", document_object.uuid);
         document_manager_document_list.appendChild(li);
     })
+
+    function check_if_object_has_same_keys(object_1, object_2) {
+      const keys_object_1 = Object.keys(object_1);
+      const keys_object_2 = Object.keys(object_2);
+
+      if (keys_object_1.length !== keys_object_2.length) return false;
+
+        return keys_object_1.every((key) => Object.hasOwn(object_2, key));
+    }
 }
 
 function delete_document() {
