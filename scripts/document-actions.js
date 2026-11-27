@@ -167,10 +167,19 @@ function delete_document() {
 
     delete_document_dialog.close();
     load_document_list_from_localstorage();
+    show_select_document_message();
+    history.replaceState(null, null, window.location.protocol + "//" + window.location.hostname + window.location.pathname); // clearer url - fjerner uuid get parameter
+    active_document = null;
 }
 
 function add_document_uuid_to_delete_form(document_uuid) {
     delete_document_form_document_uuid.value = document_uuid;
+}
+
+// skriver at brukeren må velge et dokument - calles når currentDocumentId er null
+function show_select_document_message(){
+    main_editor_text_input.innerHTML = '<p id="placeholder"><u><h1>Vennligst velg et dokument.</h1></u> <br> <br> <h2>   Credits:  </h2>  Programmering: Isak Henriksen <br> Easter egg sang: NRK <br> Dark mode inspirasjon: GitHub/Microsoft <br> <a href="https://www.youtube.com/watch?v=7lQatGnsoS8" target="_blank">Ord på Nett sangen:</a> Isak Henriksen (sangtekst) Suno AI (sanger) </p>';
+    console.log("Spør bruker om å velge et dokument")
 }
 
 new_local_document_form.addEventListener('submit', (event) => {

@@ -151,7 +151,14 @@ function check_url_for_document() {
     const document_uuid_param = url.searchParams.get("document");
     if (document_uuid_param) {
         console.log('Fant dokument i URL GET parametere ' + document_uuid_param);
-        load_document_from_localstorage(document_uuid_param);
+        try {
+            load_document_from_localstorage(document_uuid_param);
+        } catch (e) {
+            console.warn("En feil oppstod ved innlastning av dokument i URL GET parameter. Kan dokumentet være slettet? Feilmelding: " + e)
+            // clearer url - fjerner uuid get parameter
+            history.replaceState(null, null, window.location.protocol + "//" + window.location.hostname + window.location.pathname);
+        }
+        active_document = document_uuid_param;
     } else {
         console.log("Fant ingen dokumenter i URL GET parametere");
     }
@@ -159,6 +166,7 @@ function check_url_for_document() {
 
 window.onload = () => {
     update_word_and_character_counters(main_editor_text_input.innerText);
-    load_document_list_from_localstorage()
-    check_url_for_document()
+    load_document_list_from_localstorage();
+    check_url_for_document();
+    show_select_document_message();
 }
